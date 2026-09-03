@@ -70,28 +70,71 @@
   content="Software Development, Automation, Computer Vision and AI."
 >
 
-<link
-  rel="icon"
-  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffffff'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='Arial' font-weight='700' fill='%23071018'%3ESB%3C/text%3E%3C/svg%3E"
->
+
+<!-- =========================================================
+     SEO / SOCIAL / DISCOVERY
+========================================================= -->
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="bingbot" content="index, follow, max-image-preview:large">
+<meta name="format-detection" content="telephone=yes,email=yes,address=no">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="alternate" hreflang="en-IN" href="https://sribalajii.github.io/portfolioo/">
+<link rel="alternate" hreflang="x-default" href="https://sribalajii.github.io/portfolioo/">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="manifest" href="./site.webmanifest">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="./sitemap.xml">
+<meta property="og:locale" content="en_IN">
+<meta property="og:image:alt" content="Sribalaji I software developer portfolio">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&h=630&q=76">
+<meta name="twitter:image:alt" content="Sribalaji I software developer portfolio">
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"Person",
-  "name":"Sribalaji I",
-  "url":"https://sribalajii.github.io/portfolioo/",
-  "jobTitle":"Software Developer",
-  "email":"mailto:isribalaji335@gmail.com",
-  "telephone":"+91 95851 44178",
-  "address":{
-    "@type":"PostalAddress",
-    "addressLocality":"Coimbatore",
-    "addressCountry":"IN"
-  },
-  "sameAs":[
-    "https://github.com/sribalajii",
-    "https://linkedin.com/in/sribalaj-i"
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://sribalajii.github.io/portfolioo/#website",
+      "url": "https://sribalajii.github.io/portfolioo/",
+      "name": "Sribalaji I Portfolio",
+      "description": "Software Developer and ML Developer portfolio featuring Python, JavaScript, SQL, automation, computer vision and AI projects.",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://sribalajii.github.io/portfolioo/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://sribalajii.github.io/portfolioo/#person",
+      "name": "Sribalaji I",
+      "url": "https://sribalajii.github.io/portfolioo/",
+      "jobTitle": "Software Developer",
+      "email": "mailto:isribalaji335@gmail.com",
+      "telephone": "+91 95851 44178",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Coimbatore",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://github.com/sribalajii",
+        "https://linkedin.com/in/sribalaj-i"
+      ],
+      "knowsAbout": [
+        "Python",
+        "JavaScript",
+        "SQL",
+        "REST APIs",
+        "Automation",
+        "Computer Vision",
+        "Machine Learning",
+        "Generative AI",
+        "OpenCV"
+      ]
+    }
   ]
 }
 </script>
@@ -156,7 +199,7 @@ a {
 
 .background {
   position:fixed;
-  inset:-24px;
+  inset:-30px;
 
   z-index:0;
 
@@ -176,7 +219,7 @@ a {
   background-position:center;
   background-repeat:no-repeat;
 
-  transform:scale(1.025);
+  transform:scale(1.035);
 
   filter:
     saturate(.88)
@@ -2391,6 +2434,1951 @@ a {
     transition:none;
   }
 }
+
+
+/* =========================================================
+   CONTACT SOCIAL BUTTON EFFECTS
+   Original appearance before hover.
+   Brand/background colors + glare appear ONLY on hover.
+========================================================= */
+
+.contact-actions .social-fill-button {
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+
+  transition:
+    transform .18s ease,
+    color .30s .10s ease-out,
+    border-color .30s ease,
+    box-shadow .45s ease,
+    background .35s ease;
+}
+
+/* Keep button text/content above the glare */
+.contact-actions .social-fill-button {
+  z-index:0;
+}
+
+/* =========================================================
+   GLARE EFFECT — adapted from the GlareHover code you gave
+========================================================= */
+
+.contact-actions .social-fill-button::before {
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  z-index:-1;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      -30deg,
+      rgba(255,255,255,0) 58%,
+      rgba(255,255,255,.30) 69%,
+      rgba(255,255,255,0) 79%,
+      rgba(255,255,255,0) 100%
+    );
+
+  background-size:300% 300%;
+  background-repeat:no-repeat;
+  background-position:-110% -110%;
+
+  transition:
+    background-position 800ms ease;
+}
+
+/* Run glare sweep on every hover */
+.contact-actions .social-fill-button:hover::before {
+  background-position:110% 110%;
+}
+
+/* =========================================================
+   EMAIL — KEEP ORIGINAL LOOK
+   Only the glare sweep appears on hover.
+========================================================= */
+
+.contact-actions .social-email:hover {
+  /* Preserve the original button-primary appearance */
+  color:#111;
+  border-color:transparent;
+  background:#fff;
+
+  box-shadow:
+    0 8px 25px rgba(70,145,185,.16);
+}
+
+/* =========================================================
+   LINKEDIN — KEEP CURRENT BLUE
+========================================================= */
+
+.contact-actions .social-linkedin:hover {
+  color:#fff;
+
+  border-color:rgb(0,119,181);
+
+  background:rgb(0,119,181);
+
+  box-shadow:
+    inset 0 0 0 10em rgb(0,119,181),
+    0 8px 28px rgba(0,119,181,.24);
+}
+
+/* =========================================================
+   GITHUB — PURE BLACK / STRONG CONTRAST
+========================================================= */
+
+.contact-actions .social-github:hover {
+  color:#fff;
+
+  border-color:#000;
+
+  background:#000;
+
+  box-shadow:
+    inset 0 0 0 10em #000,
+    0 12px 36px rgba(0,0,0,.78),
+    0 0 0 1px rgba(255,255,255,.10);
+}
+
+/* Slight lift for all three */
+.contact-actions .social-fill-button:hover {
+  transform:translateY(-2px);
+}
+
+/* Keyboard accessibility */
+.contact-actions .social-fill-button:focus-visible {
+  outline:2px solid rgba(255,255,255,.9);
+  outline-offset:4px;
+}
+
+/* Mobile/touch versions */
+@media (hover:none) {
+
+  .contact-actions .social-fill-button:active::before {
+    background-position:110% 110%;
+  }
+
+  .contact-actions .social-email:active {
+    color:#111;
+    border-color:transparent;
+    background:#fff;
+  }
+
+  .contact-actions .social-linkedin:active {
+    color:#fff;
+    border-color:rgb(0,119,181);
+    background:rgb(0,119,181);
+  }
+
+  .contact-actions .social-github:active {
+    color:#fff;
+    border-color:#000;
+    background:#000;
+
+    box-shadow:
+      inset 0 0 0 10em #000,
+      0 12px 36px rgba(0,0,0,.78);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .contact-actions .social-fill-button,
+  .contact-actions .social-fill-button::before {
+    transition:none;
+  }
+}
+
+
+
+/* =========================================================
+   DEVELOPER PROFILE — GLARE HOVER
+   Same diagonal white glare used on the three contact buttons.
+========================================================= */
+
+.profile-card::after {
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  border-radius:inherit;
+
+  background:
+    linear-gradient(
+      -30deg,
+      rgba(255,255,255,0) 58%,
+      rgba(255,255,255,.24) 69%,
+      rgba(255,255,255,0) 79%,
+      rgba(255,255,255,0) 100%
+    );
+
+  background-size:300% 300%;
+  background-repeat:no-repeat;
+  background-position:-110% -110%;
+
+  transition:
+    background-position 800ms ease;
+}
+
+/* Run the glare every time the profile card is hovered */
+.profile-card:hover::after {
+  background-position:110% 110%;
+}
+
+/* Keep all profile content safely above the glare layer */
+.profile-card > * {
+  position:relative;
+  z-index:1;
+}
+
+@media (hover:none) {
+  .profile-card:active::after {
+    background-position:110% 110%;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .profile-card::after {
+    transition:none;
+  }
+}
+
+
+
+/* =========================================================
+   DEVELOPER PROFILE — FULL 3D POPUP CARD
+   Inspired by the Uiverse 3D card you supplied.
+
+   Sequence:
+   1. Existing glare starts immediately.
+   2. Card tilts/moves forward.
+   3. Every content layer visibly pops out in 3D.
+========================================================= */
+
+/* Parent perspective, same idea as .parent { perspective:1000px } */
+.hero {
+  perspective:1200px;
+  perspective-origin:78% 48%;
+}
+
+.profile-card {
+  transform-style:preserve-3d;
+
+  transform:
+    rotateX(0deg)
+    rotateY(0deg)
+    translate3d(0,0,0)
+    scale(1);
+
+  transform-origin:center center;
+
+  will-change:
+    transform,
+    box-shadow;
+
+  transition:
+    transform .58s cubic-bezier(.2,.8,.2,1) .32s,
+    box-shadow .58s ease .32s,
+    border-color .35s ease .32s;
+}
+
+/* Main card movement — much closer to the Uiverse example */
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover {
+    transform:
+      rotate3d(.48, 1, 0, 14deg)
+      translate3d(-10px,-10px,42px);
+
+    border-color:
+      rgba(185,225,245,.24);
+
+    box-shadow:
+      -10px 22px 35px rgba(0,0,0,.20),
+      15px 42px 72px rgba(0,0,0,.42),
+      0 0 34px rgba(75,170,215,.09);
+  }
+}
+
+
+/* =========================================================
+   INTERNAL 3D LAYERS
+========================================================= */
+
+.profile-card .profile-label,
+.profile-card h2,
+.profile-card h3,
+.profile-card .profile-divider,
+.profile-card .quick-info,
+.profile-card .stack-tags {
+  transform-style:preserve-3d;
+
+  backface-visibility:hidden;
+
+  will-change:transform;
+
+  transition:
+    transform .55s cubic-bezier(.2,.8,.2,1) .40s,
+    text-shadow .45s ease .40s;
+}
+
+
+/* Small top label */
+.profile-card:hover .profile-label {
+  transform:
+    translate3d(-3px,-3px,52px);
+}
+
+
+/* Main title — biggest popup like card-title in your sample */
+.profile-card:hover h2 {
+  transform:
+    translate3d(-5px,-5px,105px);
+
+  text-shadow:
+    0 10px 20px rgba(0,0,0,.32);
+}
+
+
+/* Developer role/location */
+.profile-card:hover h3 {
+  transform:
+    translate3d(-4px,-3px,82px);
+}
+
+
+/* Divider stays slightly behind text */
+.profile-card:hover .profile-divider {
+  transform:
+    translate3d(0,0,42px);
+}
+
+
+/* Contact rows get their own 3D plane */
+.profile-card:hover .quick-info {
+  transform:
+    translate3d(-3px,0,74px);
+}
+
+
+/* Skill chips sit closest to the viewer */
+.profile-card:hover .stack-tags {
+  transform:
+    translate3d(-4px,4px,90px);
+}
+
+
+/* =========================================================
+   EACH CONTACT ROW POPS OUT
+========================================================= */
+
+.profile-card .quick-row {
+  transform-style:preserve-3d;
+
+  transition:
+    transform .34s cubic-bezier(.2,.8,.2,1),
+    background .28s ease,
+    border-color .28s ease;
+
+  border-radius:9px;
+}
+
+.profile-card:hover .quick-row:nth-child(1) {
+  transform:
+    translate3d(-1px,0,8px);
+}
+
+.profile-card:hover .quick-row:nth-child(2) {
+  transform:
+    translate3d(-2px,0,13px);
+}
+
+.profile-card:hover .quick-row:nth-child(3) {
+  transform:
+    translate3d(-3px,0,18px);
+}
+
+.profile-card:hover .quick-row:nth-child(4) {
+  transform:
+    translate3d(-4px,0,23px);
+}
+
+
+/* When the pointer goes over an individual row,
+   that exact row pops even farther forward. */
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover .quick-row:hover {
+    transform:
+      translate3d(-7px,-3px,58px);
+
+    background:
+      rgba(255,255,255,.035);
+  }
+}
+
+
+/* =========================================================
+   EACH SKILL CHIP POPS OUT
+========================================================= */
+
+.profile-card .stack-tags span {
+  transform-style:preserve-3d;
+
+  transition:
+    transform .30s cubic-bezier(.2,.8,.2,1),
+    border-color .28s ease,
+    background .28s ease,
+    box-shadow .28s ease;
+}
+
+.profile-card:hover .stack-tags span:nth-child(1) {
+  transform:translate3d(0,0,8px);
+}
+
+.profile-card:hover .stack-tags span:nth-child(2) {
+  transform:translate3d(0,0,13px);
+}
+
+.profile-card:hover .stack-tags span:nth-child(3) {
+  transform:translate3d(0,0,18px);
+}
+
+.profile-card:hover .stack-tags span:nth-child(4) {
+  transform:translate3d(0,0,23px);
+}
+
+.profile-card:hover .stack-tags span:nth-child(5) {
+  transform:translate3d(0,0,28px);
+}
+
+.profile-card:hover .stack-tags span:nth-child(6) {
+  transform:translate3d(0,0,33px);
+}
+
+
+/* Hovering one chip = extra popup, similar to the
+   individual 3D movement in the Uiverse example. */
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover .stack-tags span:hover {
+    transform:
+      translate3d(0,-5px,76px);
+
+    border-color:
+      rgba(195,235,251,.30);
+
+    background:
+      rgba(255,255,255,.075);
+
+    box-shadow:
+      0 10px 22px rgba(0,0,0,.18);
+  }
+}
+
+
+/* =========================================================
+   INDIVIDUAL TEXT / LINKS POP
+========================================================= */
+
+.profile-card .quick-label,
+.profile-card .quick-value,
+.profile-card .quick-value a {
+  display:inline-block;
+
+  transform-style:preserve-3d;
+
+  transition:
+    transform .28s ease,
+    color .28s ease;
+}
+
+
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover .quick-row:hover .quick-label {
+    transform:
+      translate3d(-2px,0,12px);
+  }
+
+  .profile-card:hover .quick-row:hover .quick-value {
+    transform:
+      translate3d(2px,0,22px);
+  }
+
+  .profile-card:hover .quick-value a:hover {
+    transform:
+      translate3d(3px,-1px,18px);
+
+    color:#fff;
+  }
+}
+
+
+/* =========================================================
+   CRISP 3D RENDERING
+   More depth without blur/soft scaling.
+========================================================= */
+
+.profile-card,
+.profile-card * {
+  filter:none !important;
+}
+
+.profile-card {
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:geometricPrecision;
+}
+
+.profile-card .profile-label,
+.profile-card h2,
+.profile-card h3,
+.profile-card .quick-row,
+.profile-card .quick-label,
+.profile-card .quick-value,
+.profile-card .quick-value a,
+.profile-card .stack-tags,
+.profile-card .stack-tags span {
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+/* Avoid scale transforms because scaling can soften text.
+   Depth is created with translateZ instead. */
+
+/* =========================================================
+   GLARE FIRST
+========================================================= */
+
+/*
+   The glare stays immediate.
+   3D movement has a short .32s delay, so your eye first sees
+   the glare start and then the full popup card movement.
+*/
+.profile-card::after {
+  transition:
+    background-position 800ms ease !important;
+}
+
+
+/* =========================================================
+   RETURN ANIMATION
+========================================================= */
+
+.profile-card:not(:hover) {
+  transition-delay:0s;
+}
+
+.profile-card:not(:hover) .profile-label,
+.profile-card:not(:hover) h2,
+.profile-card:not(:hover) h3,
+.profile-card:not(:hover) .profile-divider,
+.profile-card:not(:hover) .quick-info,
+.profile-card:not(:hover) .stack-tags {
+  transition-delay:0s;
+}
+
+
+/* =========================================================
+   TOUCH / MOBILE
+========================================================= */
+
+@media (hover:none) {
+
+  .profile-card,
+  .profile-card:active {
+    transform:none;
+  }
+
+  .profile-card .profile-label,
+  .profile-card h2,
+  .profile-card h3,
+  .profile-card .profile-divider,
+  .profile-card .quick-info,
+  .profile-card .stack-tags,
+  .profile-card .quick-row,
+  .profile-card .stack-tags span {
+    transform:none !important;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce) {
+
+  .profile-card,
+  .profile-card .profile-label,
+  .profile-card h2,
+  .profile-card h3,
+  .profile-card .profile-divider,
+  .profile-card .quick-info,
+  .profile-card .stack-tags,
+  .profile-card .quick-row,
+  .profile-card .stack-tags span {
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+
+
+/* =========================================================
+   DEVELOPER PROFILE — HIGHER VISIBILITY
+   Stronger contrast both normally and during 3D hover.
+========================================================= */
+
+/* Stronger default card visibility */
+.profile-card {
+  border-color:
+    rgba(205,235,250,.22) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(28,48,68,.92),
+      rgba(7,16,27,.94)
+    ) !important;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.36),
+    0 0 0 1px rgba(255,255,255,.025),
+    inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+
+/* Keep the card strong and readable while tilted */
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover {
+    border-color:
+      rgba(215,242,255,.34) !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(31,53,74,.97),
+        rgba(7,15,25,.98)
+      ) !important;
+
+    box-shadow:
+      -10px 22px 36px rgba(0,0,0,.24),
+      18px 46px 78px rgba(0,0,0,.48),
+      0 0 30px rgba(62,170,220,.13),
+      inset 0 1px 0 rgba(255,255,255,.10) !important;
+  }
+}
+
+/* Stronger text visibility */
+.profile-card .profile-label {
+  color:
+    rgba(225,241,250,.62) !important;
+}
+
+.profile-card h2 {
+  color:#fff !important;
+}
+
+.profile-card h3 {
+  color:
+    rgba(235,245,250,.78) !important;
+}
+
+.profile-card .quick-label {
+  color:
+    rgba(220,235,244,.50) !important;
+}
+
+.profile-card .quick-value,
+.profile-card .quick-value a {
+  color:
+    rgba(245,250,253,.88) !important;
+}
+
+.profile-card .profile-divider {
+  background:
+    rgba(220,240,250,.15) !important;
+}
+
+/* Skill pills are easier to see */
+.profile-card .stack-tags span {
+  color:
+    rgba(240,248,252,.76) !important;
+
+  border-color:
+    rgba(210,235,247,.16) !important;
+
+  background:
+    rgba(255,255,255,.055) !important;
+}
+
+/* Preserve readability while content is popped forward */
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover .profile-label {
+    color:
+      rgba(235,247,252,.72) !important;
+  }
+
+  .profile-card:hover h3 {
+    color:
+      rgba(244,250,253,.86) !important;
+  }
+
+  .profile-card:hover .quick-label {
+    color:
+      rgba(226,240,247,.58) !important;
+  }
+
+  .profile-card:hover .quick-value,
+  .profile-card:hover .quick-value a {
+    color:
+      rgba(255,255,255,.94) !important;
+  }
+
+  .profile-card:hover .stack-tags span {
+    color:
+      rgba(250,253,255,.84) !important;
+
+    border-color:
+      rgba(220,240,250,.20) !important;
+
+    background:
+      rgba(255,255,255,.07) !important;
+  }
+}
+
+/* Slight dark inner veil behind content to stop the rainy
+   background from visually washing out the card. */
+.profile-card::before {
+  opacity:.88 !important;
+}
+
+/* Keep glare visible but softer, so it doesn't reduce readability */
+.profile-card::after {
+  background:
+    linear-gradient(
+      -30deg,
+      rgba(255,255,255,0) 58%,
+      rgba(255,255,255,.18) 69%,
+      rgba(255,255,255,0) 79%,
+      rgba(255,255,255,0) 100%
+    ) !important;
+}
+
+
+
+
+/* =========================================================
+   PROFILE VISIBILITY — TRANSPARENT VERSION
+   Keep the original glass transparency.
+   Improve visibility mainly during 3D hover WITHOUT making
+   the card darker.
+========================================================= */
+
+/* Restore the original transparent glass look */
+.profile-card {
+  border-color:
+    rgba(255,255,255,.12) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.075),
+      rgba(5,9,14,.58)
+    ) !important;
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.27) !important;
+}
+
+/* Restore the original internal blue glow */
+.profile-card::before {
+  opacity:1 !important;
+
+  background:
+    rgba(105,185,225,.12) !important;
+}
+
+/* Normal state stays very close to the original design */
+.profile-card .profile-label {
+  color:
+    rgba(255,255,255,.42) !important;
+}
+
+.profile-card h2 {
+  color:#fff !important;
+}
+
+.profile-card h3 {
+  color:
+    rgba(255,255,255,.66) !important;
+}
+
+.profile-card .quick-label {
+  color:
+    rgba(255,255,255,.38) !important;
+}
+
+.profile-card .quick-value,
+.profile-card .quick-value a {
+  color:
+    rgba(255,255,255,.80) !important;
+}
+
+.profile-card .profile-divider {
+  background:
+    rgba(255,255,255,.11) !important;
+}
+
+.profile-card .stack-tags span {
+  color:
+    rgba(255,255,255,.68) !important;
+
+  border-color:
+    rgba(255,255,255,.11) !important;
+
+  background:
+    rgba(255,255,255,.045) !important;
+}
+
+
+/* =========================================================
+   3D HOVER — MORE VISIBLE, STILL TRANSPARENT
+========================================================= */
+
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover {
+    /*
+      Do NOT darken the panel.
+      We only make the glass edge/light slightly clearer.
+    */
+    border-color:
+      rgba(205,238,252,.30) !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(255,255,255,.105),
+        rgba(5,9,14,.61)
+      ) !important;
+
+    box-shadow:
+      -10px 22px 36px rgba(0,0,0,.20),
+      16px 42px 72px rgba(0,0,0,.34),
+      0 0 26px rgba(85,190,235,.11),
+      inset 0 1px 0 rgba(255,255,255,.10) !important;
+  }
+
+  /* Make the popped 3D content clearer rather than darkening card */
+  .profile-card:hover .profile-label {
+    color:
+      rgba(240,249,253,.70) !important;
+  }
+
+  .profile-card:hover h2 {
+    color:#fff !important;
+
+    text-shadow:
+      0 7px 18px rgba(0,0,0,.22) !important;
+  }
+
+  .profile-card:hover h3 {
+    color:
+      rgba(248,252,255,.86) !important;
+  }
+
+  .profile-card:hover .quick-label {
+    color:
+      rgba(230,244,250,.58) !important;
+  }
+
+  .profile-card:hover .quick-value,
+  .profile-card:hover .quick-value a {
+    color:
+      rgba(255,255,255,.96) !important;
+
+    text-shadow:
+      0 3px 10px rgba(0,0,0,.18);
+  }
+
+  .profile-card:hover .profile-divider {
+    background:
+      rgba(220,244,255,.17) !important;
+  }
+
+  .profile-card:hover .stack-tags span {
+    color:
+      rgba(252,254,255,.88) !important;
+
+    border-color:
+      rgba(210,238,250,.19) !important;
+
+    background:
+      rgba(255,255,255,.065) !important;
+  }
+}
+
+
+/* Keep glare light and transparent */
+.profile-card::after {
+  background:
+    linear-gradient(
+      -30deg,
+      rgba(255,255,255,0) 58%,
+      rgba(255,255,255,.20) 69%,
+      rgba(255,255,255,0) 79%,
+      rgba(255,255,255,0) 100%
+    ) !important;
+}
+
+
+
+
+/* =========================================================
+   DEVELOPER PROFILE — HOVER SEQUENCE
+   1) Glare
+   2) 3D card movement
+   3) Email -> Phone -> GitHub -> LinkedIn popup one-by-one
+   4) Remain in normal 3D state until mouse leaves
+========================================================= */
+
+/* STEP 1 — GLARE */
+.profile-card::after {
+  transition: background-position 800ms ease !important;
+}
+
+/* STEP 2 — 3D CARD */
+.profile-card {
+  transition:
+    transform .58s cubic-bezier(.2,.8,.2,1) .82s,
+    box-shadow .58s ease .82s,
+    border-color .35s ease .82s,
+    background .35s ease .82s !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover {
+    transform:
+      rotate3d(.48, 1, 0, 14deg)
+      translate3d(-10px,-10px,42px) !important;
+  }
+}
+
+.profile-card .profile-label,
+.profile-card h2,
+.profile-card h3,
+.profile-card .profile-divider,
+.profile-card .quick-info,
+.profile-card .stack-tags {
+  transition:
+    transform .55s cubic-bezier(.2,.8,.2,1) .90s,
+    text-shadow .45s ease .90s !important;
+}
+
+/* STEP 3 — AUTO POPUPS */
+@keyframes profileInfoPopEmail {
+  0%   { transform:translate3d(-1px,0,8px); }
+  42%  { transform:translate3d(-8px,-4px,72px); }
+  72%  { transform:translate3d(-4px,-2px,32px); }
+  100% { transform:translate3d(-1px,0,8px); }
+}
+
+@keyframes profileInfoPopPhone {
+  0%   { transform:translate3d(-2px,0,13px); }
+  42%  { transform:translate3d(-8px,-4px,76px); }
+  72%  { transform:translate3d(-4px,-2px,36px); }
+  100% { transform:translate3d(-2px,0,13px); }
+}
+
+@keyframes profileInfoPopGithub {
+  0%   { transform:translate3d(-3px,0,18px); }
+  42%  { transform:translate3d(-9px,-4px,80px); }
+  72%  { transform:translate3d(-5px,-2px,40px); }
+  100% { transform:translate3d(-3px,0,18px); }
+}
+
+@keyframes profileInfoPopLinkedin {
+  0%   { transform:translate3d(-4px,0,23px); }
+  42%  { transform:translate3d(-10px,-4px,84px); }
+  72%  { transform:translate3d(-5px,-2px,44px); }
+  100% { transform:translate3d(-4px,0,23px); }
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover .quick-row:nth-child(1) {
+    animation:profileInfoPopEmail .46s cubic-bezier(.2,.9,.25,1) 1.45s 1 both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(2) {
+    animation:profileInfoPopPhone .46s cubic-bezier(.2,.9,.25,1) 1.78s 1 both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(3) {
+    animation:profileInfoPopGithub .46s cubic-bezier(.2,.9,.25,1) 2.11s 1 both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(4) {
+    animation:profileInfoPopLinkedin .46s cubic-bezier(.2,.9,.25,1) 2.44s 1 both !important;
+  }
+
+  /* STEP 4 — normal 3D state remains */
+  .profile-card:hover .quick-row:hover {
+    transform:translate3d(-7px,-3px,58px) !important;
+    background:rgba(255,255,255,.035);
+  }
+}
+
+/* Leaving resets; re-entering replays full sequence */
+.profile-card:not(:hover) {
+  transition-delay:0s !important;
+}
+
+.profile-card:not(:hover) .quick-row {
+  animation:none !important;
+}
+
+@media (hover:none) {
+  .profile-card,
+  .profile-card:active {
+    transition-delay:0s !important;
+    transform:none !important;
+  }
+
+  .profile-card .quick-row {
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .profile-card,
+  .profile-card::after,
+  .profile-card .profile-label,
+  .profile-card h2,
+  .profile-card h3,
+  .profile-card .profile-divider,
+  .profile-card .quick-info,
+  .profile-card .stack-tags,
+  .profile-card .quick-row {
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+
+
+/* =========================================================
+   PROFILE — SIMPLE SMOOTH ONE-BY-ONE POPUP
+   Clean popup motion without multi-stage movement.
+========================================================= */
+
+/* Keep profile text about 10% larger for visibility */
+.profile-card .profile-label {
+  font-size:9.9px !important;
+}
+
+.profile-card h2 {
+  font-size:
+    clamp(25.3px,2.2vw,34.1px) !important;
+}
+
+.profile-card h3 {
+  font-size:13.2px !important;
+}
+
+.profile-card .quick-label {
+  font-size:9.9px !important;
+}
+
+.profile-card .quick-value {
+  font-size:11px !important;
+}
+
+.profile-card .stack-tags span {
+  font-size:9.9px !important;
+}
+
+
+/* Clean one-time popup keyframes */
+@keyframes simpleProfilePopEmail {
+  0% {
+    transform:translate3d(-1px,0,8px);
+  }
+
+  52% {
+    transform:translate3d(-8px,-4px,72px);
+  }
+
+  100% {
+    transform:translate3d(-1px,0,8px);
+  }
+}
+
+@keyframes simpleProfilePopPhone {
+  0% {
+    transform:translate3d(-2px,0,13px);
+  }
+
+  52% {
+    transform:translate3d(-8px,-4px,76px);
+  }
+
+  100% {
+    transform:translate3d(-2px,0,13px);
+  }
+}
+
+@keyframes simpleProfilePopGithub {
+  0% {
+    transform:translate3d(-3px,0,18px);
+  }
+
+  52% {
+    transform:translate3d(-9px,-4px,80px);
+  }
+
+  100% {
+    transform:translate3d(-3px,0,18px);
+  }
+}
+
+@keyframes simpleProfilePopLinkedin {
+  0% {
+    transform:translate3d(-4px,0,23px);
+  }
+
+  52% {
+    transform:translate3d(-10px,-4px,84px);
+  }
+
+  100% {
+    transform:translate3d(-4px,0,23px);
+  }
+}
+
+
+/*
+  Sequence:
+  0.00s - 0.80s : glare
+  0.82s          : 3D card starts
+  1.45s          : Email
+  1.82s          : Phone
+  2.19s          : GitHub
+  2.56s          : LinkedIn
+  then normal 3D hover remains
+*/
+@media (hover:hover) and (pointer:fine) {
+
+  .profile-card:hover .quick-row:nth-child(1) {
+    animation:
+      simpleProfilePopEmail
+      .50s
+      cubic-bezier(.22,1,.36,1)
+      1.45s
+      1
+      both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(2) {
+    animation:
+      simpleProfilePopPhone
+      .50s
+      cubic-bezier(.22,1,.36,1)
+      1.82s
+      1
+      both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(3) {
+    animation:
+      simpleProfilePopGithub
+      .50s
+      cubic-bezier(.22,1,.36,1)
+      2.19s
+      1
+      both !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(4) {
+    animation:
+      simpleProfilePopLinkedin
+      .50s
+      cubic-bezier(.22,1,.36,1)
+      2.56s
+      1
+      both !important;
+  }
+}
+
+
+/* Reset on mouse leave, replay on next hover */
+.profile-card:not(:hover) .quick-row {
+  animation:none !important;
+}
+
+
+/* =========================================================
+   FINAL CONTACT — EMAIL BUTTON ONLY
+   Google-theme BORDER GLOW only.
+   Button fill stays normal white.
+   Existing glare remains.
+========================================================= */
+
+.contact-actions .social-email {
+  position:relative;
+  isolation:isolate;
+
+  color:#111 !important;
+  background:#fff !important;
+
+  border:1px solid rgba(255,255,255,.75) !important;
+
+  transition:
+    transform .42s cubic-bezier(.25,1,.5,1),
+    box-shadow .42s ease,
+    filter .42s ease !important;
+}
+
+
+/* Google multicolor border ring */
+.contact-actions .social-email::after {
+  content:"";
+
+  position:absolute;
+  inset:-2px;
+
+  z-index:-2;
+
+  border-radius:inherit;
+
+  padding:2px;
+
+  pointer-events:none;
+
+  opacity:0;
+
+  background:
+    conic-gradient(
+      from 20deg,
+      #4285F4 0deg 90deg,
+      #EA4335 90deg 180deg,
+      #FBBC05 180deg 270deg,
+      #34A853 270deg 360deg
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  transition:
+    opacity .35s ease,
+    filter .35s ease;
+}
+
+
+/* Soft glow outside the border only */
+@media (hover:hover) and (pointer:fine) {
+
+  .contact-actions .social-email:hover {
+    transform:
+      translateY(-6px)
+      scale(1.03) !important;
+
+    color:#111 !important;
+    background:#fff !important;
+
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.18),
+      0 0 8px rgba(66,133,244,.18),
+      0 0 12px rgba(234,67,53,.12),
+      0 0 14px rgba(251,188,5,.10),
+      0 0 16px rgba(52,168,83,.12) !important;
+  }
+
+  .contact-actions .social-email:hover::after {
+    opacity:1;
+
+    filter:
+      drop-shadow(0 0 5px rgba(66,133,244,.36))
+      drop-shadow(0 0 6px rgba(234,67,53,.24))
+      drop-shadow(0 0 7px rgba(52,168,83,.20));
+  }
+}
+
+
+/* Keep your existing diagonal glare sweep */
+.contact-actions .social-email::before {
+  transition:
+    background-position 800ms ease !important;
+}
+
+
+/* Mobile/touch */
+@media (hover:none) {
+  .contact-actions .social-email:active::after {
+    opacity:1;
+  }
+
+  .contact-actions .social-email:active {
+    color:#111 !important;
+    background:#fff !important;
+  }
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion:reduce) {
+  .contact-actions .social-email,
+  .contact-actions .social-email::after {
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   FINAL EMAIL BUTTON — GRAY GLOW -> GOOGLE MULTICOLOR GLOW
+   Inspired by the before/after reference images.
+   The button itself stays normal; only its border/glow changes.
+========================================================= */
+
+.contact-actions .social-email {
+  position:relative;
+  isolation:isolate;
+
+  color:#111 !important;
+  background:#fff !important;
+
+  border:1px solid rgba(180,180,180,.92) !important;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 8px rgba(210,210,210,.22),
+    0 4px 10px rgba(0,0,0,.16) !important;
+
+  filter:
+    grayscale(100%)
+    opacity(.92)
+    brightness(1.02);
+
+  transition:
+    transform .42s cubic-bezier(.25,1,.5,1),
+    filter .42s cubic-bezier(.25,1,.5,1),
+    box-shadow .42s ease,
+    border-color .42s ease !important;
+}
+
+
+/* Neutral glowing border before hover */
+.contact-actions .social-email::after {
+  content:"";
+
+  position:absolute;
+  inset:-3px;
+
+  z-index:-2;
+
+  border-radius:inherit;
+
+  padding:2px;
+
+  pointer-events:none;
+
+  opacity:.78;
+
+  background:
+    linear-gradient(
+      135deg,
+      #c9c9c9,
+      #8f8f8f 42%,
+      #d7d7d7 72%,
+      #a6a6a6
+    );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  filter:
+    drop-shadow(0 0 4px rgba(255,255,255,.28))
+    drop-shadow(0 0 7px rgba(185,185,185,.20));
+
+  transition:
+    opacity .38s ease,
+    filter .38s ease,
+    background .38s ease;
+}
+
+
+/* Hover = Google-style multicolor glowing outline */
+@media (hover:hover) and (pointer:fine) {
+
+  .contact-actions .social-email:hover {
+    transform:
+      translateY(-6px)
+      scale(1.035) !important;
+
+    color:#111 !important;
+    background:#fff !important;
+
+    border-color:transparent !important;
+
+    filter:
+      grayscale(0%)
+      opacity(1)
+      brightness(1) !important;
+
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.18),
+      0 0 10px rgba(66,133,244,.14),
+      0 0 12px rgba(234,67,53,.10),
+      0 0 14px rgba(251,188,5,.08),
+      0 0 16px rgba(52,168,83,.10) !important;
+  }
+
+  .contact-actions .social-email:hover::after {
+    opacity:1;
+
+    background:
+      conic-gradient(
+        from 215deg,
+        #4285F4 0deg 82deg,
+        #34A853 82deg 165deg,
+        #FBBC05 165deg 250deg,
+        #EA4335 250deg 360deg
+      );
+
+    filter:
+      drop-shadow(0 0 5px rgba(66,133,244,.42))
+      drop-shadow(0 0 7px rgba(52,168,83,.30))
+      drop-shadow(0 0 7px rgba(251,188,5,.26))
+      drop-shadow(0 0 7px rgba(234,67,53,.28));
+  }
+}
+
+
+/* Preserve your existing glare sweep on Email */
+.contact-actions .social-email::before {
+  transition:
+    background-position 800ms ease !important;
+}
+
+
+/* Touch */
+@media (hover:none) {
+  .contact-actions .social-email:active {
+    filter:none !important;
+  }
+
+  .contact-actions .social-email:active::after {
+    opacity:1;
+
+    background:
+      conic-gradient(
+        from 215deg,
+        #4285F4 0deg 82deg,
+        #34A853 82deg 165deg,
+        #FBBC05 165deg 250deg,
+        #EA4335 250deg 360deg
+      );
+  }
+}
+
+
+/* =========================================================
+   NAV SB LOGO — SUBTLE REALISTIC STICKER PEEL
+   Only the top-right corner appears lightly peeled.
+========================================================= */
+
+.brand-mark {
+  position:relative;
+  overflow:visible;
+
+  transform-style:preserve-3d;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.65);
+
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease;
+}
+
+
+/* tiny peeled corner */
+.brand-mark::after {
+  content:"";
+
+  position:absolute;
+
+  top:-1px;
+  right:-1px;
+
+  width:11px;
+  height:11px;
+
+  border-radius:
+    0 10px 0 8px;
+
+  background:
+    linear-gradient(
+      225deg,
+      rgba(255,255,255,.98) 0 45%,
+      rgba(220,228,234,.94) 46% 62%,
+      rgba(120,135,145,.35) 63% 72%,
+      transparent 73%
+    );
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      28% 72%,
+      0 0
+    );
+
+  transform:
+    translate3d(1px,-1px,2px)
+    rotateZ(1deg);
+
+  transform-origin:
+    100% 0;
+
+  filter:
+    drop-shadow(-1px 2px 1px rgba(0,0,0,.18));
+
+  pointer-events:none;
+
+  transition:
+    transform .28s cubic-bezier(.2,.8,.2,1),
+    filter .28s ease;
+}
+
+
+/* very subtle curl on hover, not exaggerated */
+@media (hover:hover) and (pointer:fine) {
+
+  .brand:hover .brand-mark {
+    transform:
+      translateY(-1px);
+
+    box-shadow:
+      0 5px 13px rgba(0,0,0,.20),
+      inset 0 1px 0 rgba(255,255,255,.70);
+  }
+
+  .brand:hover .brand-mark::after {
+    transform:
+      translate3d(2px,-2px,5px)
+      rotateZ(4deg)
+      rotateX(10deg);
+
+    filter:
+      drop-shadow(-2px 3px 2px rgba(0,0,0,.20));
+  }
+}
+
+
+@media (prefers-reduced-motion:reduce) {
+  .contact-actions .social-email,
+  .contact-actions .social-email::after,
+  .brand-mark,
+  .brand-mark::after {
+    transition:none !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   FINAL FIX — EMAIL BORDER EFFECT
+   Uses the BUTTON ITSELF for the border so the glow is
+   always visible even though the button has overflow:hidden.
+========================================================= */
+
+.contact-actions .social-email {
+  position:relative;
+  isolation:isolate;
+
+  color:#111 !important;
+
+  /* gray outline before hover */
+  border:2px solid transparent !important;
+
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(
+      135deg,
+      #d8d8d8 0%,
+      #9a9a9a 42%,
+      #eeeeee 70%,
+      #a7a7a7 100%
+    ) border-box !important;
+
+  box-shadow:
+    0 0 5px rgba(255,255,255,.22),
+    0 0 9px rgba(185,185,185,.18),
+    0 5px 12px rgba(0,0,0,.16) !important;
+
+  filter:none !important;
+
+  transition:
+    transform .42s cubic-bezier(.25,1,.5,1),
+    background .42s ease,
+    box-shadow .42s ease !important;
+}
+
+
+/*
+  The old outer pseudo-border is no longer needed.
+  Disable it so there is no clipping/conflict.
+*/
+.contact-actions .social-email::after {
+  content:none !important;
+}
+
+
+/* Google-color outline after hover */
+@media (hover:hover) and (pointer:fine) {
+
+  .contact-actions .social-email:hover {
+    color:#111 !important;
+
+    transform:
+      translateY(-6px)
+      scale(1.035) !important;
+
+    border:2px solid transparent !important;
+
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      conic-gradient(
+        from 215deg,
+        #4285F4 0deg 82deg,
+        #34A853 82deg 165deg,
+        #FBBC05 165deg 250deg,
+        #EA4335 250deg 360deg
+      ) border-box !important;
+
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.18),
+      0 0 7px rgba(66,133,244,.35),
+      0 0 9px rgba(52,168,83,.26),
+      0 0 11px rgba(251,188,5,.22),
+      0 0 13px rgba(234,67,53,.24) !important;
+  }
+}
+
+
+/* Keep the existing diagonal glare on Email */
+.contact-actions .social-email::before {
+  z-index:0 !important;
+  pointer-events:none !important;
+}
+
+.contact-actions .social-email {
+  z-index:0;
+}
+
+/* Make sure the Email text sits above the glare */
+.contact-actions .social-email {
+  text-shadow:none;
+}
+
+
+/* Touch/mobile equivalent */
+@media (hover:none) {
+  .contact-actions .social-email:active {
+    border:2px solid transparent !important;
+
+    background:
+      linear-gradient(#fff,#fff) padding-box,
+      conic-gradient(
+        from 215deg,
+        #4285F4 0deg 82deg,
+        #34A853 82deg 165deg,
+        #FBBC05 165deg 250deg,
+        #EA4335 250deg 360deg
+      ) border-box !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL FIX — SB LOGO REALISTIC TOP-RIGHT STICKER PEEL
+   Larger, softer folded corner like a real paper sticker.
+========================================================= */
+
+.brand-mark {
+  position:relative;
+  overflow:visible !important;
+
+  background:#fff !important;
+
+  transform-style:preserve-3d;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.80) !important;
+}
+
+
+/*
+  Dark little exposed fold/shadow UNDER the lifted paper.
+  This makes the curl readable instead of looking like
+  a random white triangle.
+*/
+.brand-mark::before {
+  content:"";
+
+  position:absolute;
+
+  top:-1px;
+  right:-1px;
+
+  width:14px;
+  height:14px;
+
+  z-index:2;
+
+  pointer-events:none;
+
+  clip-path:
+    polygon(
+      100% 0,
+      100% 100%,
+      20% 20%
+    );
+
+  background:
+    linear-gradient(
+      225deg,
+      rgba(80,88,96,.48) 0%,
+      rgba(145,153,160,.30) 48%,
+      rgba(255,255,255,0) 72%
+    );
+
+  filter:
+    blur(.15px);
+
+  opacity:.78;
+}
+
+
+/*
+  The actual lifted sticker flap.
+  It folds diagonally from the top-right corner.
+*/
+.brand-mark::after {
+  content:"";
+
+  position:absolute;
+
+  top:-5px;
+  right:-5px;
+
+  width:16px;
+  height:16px;
+
+  z-index:3;
+
+  pointer-events:none;
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      24% 72%
+    );
+
+  border-radius:
+    10px 7px 2px 8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fafafa 38%,
+      #e7e7e7 60%,
+      #c8cdd1 78%,
+      #ffffff 100%
+    );
+
+  transform-origin:
+    100% 0;
+
+  transform:
+    rotateZ(-10deg)
+    rotateX(18deg)
+    translate3d(1px,-1px,4px);
+
+  box-shadow:
+    -3px 4px 5px rgba(0,0,0,.18);
+
+  filter:
+    drop-shadow(-1px 2px 1px rgba(0,0,0,.14));
+
+  transition:
+    transform .32s cubic-bezier(.2,.8,.2,1),
+    box-shadow .32s ease;
+}
+
+
+/* Very small extra lift on hover — still realistic */
+@media (hover:hover) and (pointer:fine) {
+
+  .brand:hover .brand-mark::after {
+    transform:
+      rotateZ(-14deg)
+      rotateX(28deg)
+      translate3d(2px,-2px,7px);
+
+    box-shadow:
+      -4px 6px 7px rgba(0,0,0,.20);
+  }
+
+  .brand:hover .brand-mark::before {
+    opacity:.90;
+  }
+}
+
+
+@media (prefers-reduced-motion:reduce) {
+  .brand-mark::after {
+    transition:none !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   SB LOGO — NORMAL
+   Peel/sticker effect removed.
+========================================================= */
+
+.brand-mark {
+  position:relative;
+  overflow:hidden !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  content:none !important;
+  display:none !important;
+}
+
+.brand:hover .brand-mark {
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+
+
+
+/* =========================================================
+   PROFILE BOX — +10% TEXT SIZE FOR VISIBILITY
+========================================================= */
+
+.profile-card .profile-label {
+  font-size:10.9px !important;
+}
+
+.profile-card h2 {
+  font-size:
+    clamp(27.8px,2.42vw,37.5px) !important;
+}
+
+.profile-card h3 {
+  font-size:14.5px !important;
+}
+
+.profile-card .quick-label {
+  font-size:10.9px !important;
+}
+
+.profile-card .quick-value {
+  font-size:12.1px !important;
+}
+
+.profile-card .stack-tags span {
+  font-size:10.9px !important;
+}
+
+
+
+/* =========================================================
+   MOBILE PERFORMANCE HARDENING
+========================================================= */
+@media (max-width:820px), (pointer:coarse) {
+  :root {
+    --portfolio-bg:url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=780&q=62");
+  }
+  .background { inset:-6px; transform:scale(1.008); filter:saturate(.86) contrast(1.04); }
+  .navbar,.profile-card,.glass-card,.project,.contact-card {
+    backdrop-filter:blur(6px) saturate(1.05);
+    -webkit-backdrop-filter:blur(6px) saturate(1.05);
+  }
+  .site { scroll-behavior:auto; }
+  .masonry-reveal,.masonry-reveal.masonry-visible { filter:none; will-change:auto; }
+}
+@media (max-width:520px) {
+  .navbar,.profile-card,.glass-card,.project,.contact-card {
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+  }
+  .contact-actions .social-fill-button::before,.profile-card::after { background-size:220% 220%; }
+}
+@media (prefers-reduced-data:reduce) {
+  #rain-layer { display:none; }
+  :root { --portfolio-bg:url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=720&q=58"); }
+}
+
+
+
+/* =========================================================
+   PARAGRAPH TEXT — +20% VISIBILITY
+   Increase all <p> text across the site by 20%.
+   Layout, headings, buttons, labels and effects stay unchanged.
+========================================================= */
+
+p {
+  font-size: 120% !important;
+}
+
+/* Keep the increase responsive on small screens without clipping */
+@media (max-width: 820px) {
+  p {
+    line-height: 1.65;
+  }
+}
+
+
 </style>
 </head>
 
@@ -2398,7 +4386,8 @@ a {
 
 <div
   class="background"
-  aria-hidden="true"
+  role="img"
+  aria-label="Rainy neon city background"
 ></div>
 
 <div
@@ -2529,16 +4518,16 @@ a {
 
 
     <p class="hero-role">
-      ML Developer Trainee · Software Development · Automation
+      ML Developer · Software Development · Automation · Fine Tunning
     </p>
 
 
     <p class="hero-summary">
       I build end-to-end applications with Python,
-      JavaScript, SQL, clean frontend interfaces,
+      LLM, SQL, clean frontend interfaces,
       backend logic and automation integrations.
-      My work also explores computer vision,
-      generative AI and embedded systems.
+      My work also explores Fine Tunning and ML,
+      generative AI , RAG , API.
     </p>
 
 
@@ -2548,7 +4537,7 @@ a {
         class="button button-primary"
         href="#projects"
       >
-        Explore projects →
+        Explore projects
       </a>
 
 
@@ -2649,7 +4638,7 @@ a {
           <a
             href="https://github.com/sribalajii"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             github.com/sribalajii
           </a>
@@ -2670,7 +4659,7 @@ a {
           <a
             href="https://linkedin.com/in/sribalaj-i"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             linkedin.com/in/sribalaj-i
           </a>
@@ -2685,11 +4674,11 @@ a {
     <div class="stack-tags">
 
       <span>Python</span>
-      <span>JavaScript</span>
-      <span>HTML5</span>
-      <span>CSS3</span>
+      <span>ML</span>
+      <span>LLM</span>
+      <span>Fine Tunning</span>
       <span>SQL</span>
-      <span>OpenCV</span>
+      <span>Rag</span>
 
     </div>
 
@@ -2771,10 +4760,10 @@ a {
 
           <strong
             class="count-up-text"
-            data-to="3"
+            data-to="20"
             data-duration="1000"
             data-decimals="0"
-            data-suffix=""
+            data-suffix="+"
           >
             0
           </strong>
@@ -2929,7 +4918,7 @@ a {
           <a
             href="https://sribalajii.github.io/AI-Movie-Recommendation-System"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             Live Demo ↗
           </a>
@@ -2937,7 +4926,7 @@ a {
           <a
             href="https://github.com/sribalajii/AI-Movie-Recommendation-System"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             GitHub ↗
           </a>
@@ -2987,7 +4976,7 @@ a {
           <a
             href="https://github.com/sribalajii/AI-Smart-Surveillance-System"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             GitHub ↗
           </a>
@@ -3035,7 +5024,7 @@ a {
           <a
             href="https://github.com/sribalajii/AI-Desktop-Assistant"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer external"
           >
             GitHub ↗
           </a>
@@ -3505,28 +5494,28 @@ a {
       <div class="contact-actions">
 
         <a
-          class="button button-primary"
+          class="button button-primary social-fill-button social-email"
           href="mailto:isribalaji335@gmail.com"
         >
-          Email me →
+          Email me
         </a>
 
 
         <a
-          class="button button-secondary"
+          class="button button-secondary social-fill-button social-linkedin"
           href="https://linkedin.com/in/sribalaj-i"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer external"
         >
           LinkedIn
         </a>
 
 
         <a
-          class="button button-secondary"
+          class="button button-secondary social-fill-button social-github"
           href="https://github.com/sribalajii"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer external"
         >
           GitHub
         </a>
@@ -3560,7 +5549,7 @@ a {
     <a
       href="https://github.com/sribalajii"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer external"
     >
       GitHub
     </a>
@@ -4865,12 +6854,12 @@ a {
 
     const amount =
       Math.min(
-        42,
+        28,
         Math.max(
-          20,
+          14,
           Math.round(
             width /
-            13
+            18
           )
         )
       );
@@ -4922,7 +6911,7 @@ a {
     if (
       now -
       previousRainTime <
-      32
+      40
     ) {
 
       rainFrame =
@@ -4951,7 +6940,7 @@ a {
     ) {
 
       delta =
-        .032;
+        .040;
 
     }
 
@@ -5227,11 +7216,204 @@ body {
 
 <\/script>
 
+
+<script>
+
+(function () {
+
+  "use strict";
+
+  /*
+    Receive the real page pointer position and recreate
+    a mousemove event inside the rain canvas iframe.
+    The raindrops library reacts to this movement, which
+    creates the subtle background/refraction motion.
+  */
+  window.addEventListener(
+    "message",
+    function (event) {
+
+      if (
+        !event.data ||
+        event.data.type !== "raindrops-pointer"
+      ) {
+        return;
+      }
+
+      try {
+
+        var moveEvent =
+          new MouseEvent(
+            "mousemove",
+            {
+              clientX:event.data.x,
+              clientY:event.data.y,
+              bubbles:true,
+              cancelable:false
+            }
+          );
+
+
+        window.dispatchEvent(
+          moveEvent
+        );
+
+
+        document.dispatchEvent(
+          moveEvent
+        );
+
+
+        var canvas =
+          document.getElementById(
+            "bg-canvas"
+          );
+
+
+        if (canvas) {
+
+          canvas.dispatchEvent(
+            new MouseEvent(
+              "mousemove",
+              {
+                clientX:event.data.x,
+                clientY:event.data.y,
+                bubbles:true,
+                cancelable:false
+              }
+            )
+          );
+
+        }
+
+      }
+      catch (error) {}
+
+    }
+  );
+
+})();
+
+<\/script>
+
 </body>
 
 </html>`;
 
   }
+
+
+  /* =========================================================
+     DESKTOP RAIN POINTER FORWARDING
+     Restored from the older version.
+     Only affects the rain/refraction layer.
+  ========================================================= */
+
+  let rainPointerRAF =
+    0;
+
+
+  let rainPointerX =
+    0;
+
+
+  let rainPointerY =
+    0;
+
+
+  function forwardPointerToDesktopRain(
+    x,
+    y
+  ) {
+
+    rainPointerX =
+      x;
+
+
+    rainPointerY =
+      y;
+
+
+    if (
+      rainPointerRAF
+    ) {
+      return;
+    }
+
+
+    rainPointerRAF =
+      requestAnimationFrame(
+        () => {
+
+          rainPointerRAF =
+            0;
+
+
+          if (
+            rainMode !==
+            "desktop"
+          ) {
+            return;
+          }
+
+
+          const frame =
+            rainLayer.querySelector(
+              "iframe"
+            );
+
+
+          if (
+            !frame ||
+            !frame.contentWindow
+          ) {
+            return;
+          }
+
+
+          frame.contentWindow.postMessage(
+            {
+              type:
+                "raindrops-pointer",
+
+              x:
+                rainPointerX,
+
+              y:
+                rainPointerY
+            },
+            "*"
+          );
+
+        }
+      );
+
+  }
+
+
+  window.addEventListener(
+    "pointermove",
+    event => {
+
+      if (
+        reducedMotion.matches ||
+        rainMode !==
+        "desktop"
+      ) {
+        return;
+      }
+
+
+      forwardPointerToDesktopRain(
+        event.clientX,
+        event.clientY
+      );
+
+    },
+    {
+      passive:true
+    }
+  );
 
 
   function startDesktopRain() {
