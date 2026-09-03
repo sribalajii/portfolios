@@ -4379,7 +4379,168 @@ p {
 }
 
 
+
+
+/* =========================================================
+   LATEST PROFILE UPDATE
+   Faster hover + brighter text + earlier popup sequence
+========================================================= */
+
+/* Glare reacts immediately and finishes faster */
+.profile-card::after {
+  transition:
+    background-position 450ms ease !important;
+}
+
+/* 3D starts almost immediately after pointer enters */
+.profile-card {
+  transition:
+    transform .46s cubic-bezier(.2,.8,.2,1) .12s,
+    box-shadow .46s ease .12s,
+    border-color .28s ease .12s,
+    background .28s ease .12s !important;
+}
+
+/* Internal 3D layers follow almost immediately */
+.profile-card .profile-label,
+.profile-card h2,
+.profile-card h3,
+.profile-card .profile-divider,
+.profile-card .quick-info,
+.profile-card .stack-tags {
+  transition:
+    transform .46s cubic-bezier(.2,.8,.2,1) .16s,
+    text-shadow .30s ease .16s !important;
+}
+
+/* Preserve the current strong 3D position */
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover {
+    transform:
+      rotate3d(.48,1,0,14deg)
+      translate3d(-10px,-10px,42px) !important;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   BRIGHTER PROFILE TEXT
+--------------------------------------------------------- */
+
+.profile-card .profile-label {
+  color:rgba(255,255,255,.72) !important;
+}
+
+.profile-card h2 {
+  color:#fff !important;
+  text-shadow:0 2px 10px rgba(255,255,255,.05);
+}
+
+.profile-card h3 {
+  color:rgba(255,255,255,.92) !important;
+}
+
+.profile-card .quick-label {
+  color:rgba(255,255,255,.68) !important;
+}
+
+.profile-card .quick-value,
+.profile-card .quick-value a {
+  color:rgba(255,255,255,.97) !important;
+}
+
+.profile-card .profile-divider {
+  background:rgba(255,255,255,.18) !important;
+}
+
+.profile-card .stack-tags span {
+  color:rgba(255,255,255,.92) !important;
+  border-color:rgba(255,255,255,.16) !important;
+}
+
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover .profile-label {
+    color:rgba(255,255,255,.82) !important;
+  }
+
+  .profile-card:hover h3 {
+    color:rgba(255,255,255,.97) !important;
+  }
+
+  .profile-card:hover .quick-label {
+    color:rgba(255,255,255,.78) !important;
+  }
+
+  .profile-card:hover .quick-value,
+  .profile-card:hover .quick-value a {
+    color:#fff !important;
+  }
+
+  .profile-card:hover .stack-tags span {
+    color:rgba(255,255,255,.97) !important;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   FASTER ONE-BY-ONE POPUPS
+   Keep the exact popup style already in this file.
+   Only reduce waiting time.
+--------------------------------------------------------- */
+
+@media (hover:hover) and (pointer:fine) {
+  .profile-card:hover .quick-row:nth-child(1) {
+    animation-delay:.62s !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(2) {
+    animation-delay:.94s !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(3) {
+    animation-delay:1.26s !important;
+  }
+
+  .profile-card:hover .quick-row:nth-child(4) {
+    animation-delay:1.58s !important;
+  }
+}
+
+/* Reset instantly when leaving so next hover feels immediate */
+.profile-card:not(:hover) {
+  transition-delay:0s !important;
+}
+
+.profile-card:not(:hover) .profile-label,
+.profile-card:not(:hover) h2,
+.profile-card:not(:hover) h3,
+.profile-card:not(:hover) .profile-divider,
+.profile-card:not(:hover) .quick-info,
+.profile-card:not(:hover) .stack-tags {
+  transition-delay:0s !important;
+}
+
+.profile-card:not(:hover) .quick-row {
+  animation:none !important;
+}
+
+
 </style>
+
+<!-- =========================================================
+     BROWSER TAB LOGO — SB FAVICON
+========================================================= -->
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffffff'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='Arial,sans-serif' font-weight='700' fill='%23071018'%3ESB%3C/text%3E%3C/svg%3E"
+>
+<link
+  rel="shortcut icon"
+  type="image/svg+xml"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffffff'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-size='24' font-family='Arial,sans-serif' font-weight='700' fill='%23071018'%3ESB%3C/text%3E%3C/svg%3E"
+>
+
 </head>
 
 <body>
