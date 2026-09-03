@@ -4964,6 +4964,175 @@ p {
 }
 
 
+
+
+/* =========================================================
+   MOBILE NAV FINAL ALIGNMENT FIX
+   Contact stays flush on the RIGHT side.
+   Other links stay between SB and Contact without drifting.
+========================================================= */
+
+@media (max-width:720px) {
+
+  .navbar {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    width:100%;
+
+    gap:6px;
+
+    padding:
+      6px
+      7px;
+  }
+
+  .brand {
+    flex:0 0 auto;
+    margin-right:2px;
+  }
+
+  .brand-mark {
+    flex:0 0 auto;
+  }
+
+  .nav-links {
+    flex:1 1 auto;
+    min-width:0;
+
+    display:flex !important;
+    align-items:center;
+    justify-content:flex-end;
+
+    gap:0;
+
+    /* remove the horizontal-scroll offset that moved Contact left */
+    overflow:visible !important;
+    padding:0;
+    margin:0;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    display:inline-flex !important;
+
+    flex:0 1 auto;
+
+    min-width:0;
+    min-height:31px;
+
+    padding:
+      0
+      clamp(3px,1.35vw,7px);
+
+    font-size:
+      clamp(6.8px,2vw,9px);
+
+    white-space:nowrap;
+  }
+
+  /* Contact is always the fixed right-most item */
+  .nav-links .contact-link {
+    flex:0 0 auto;
+
+    margin-left:
+      clamp(2px,.8vw,5px) !important;
+    margin-right:0 !important;
+
+    min-height:32px;
+
+    padding:
+      0
+      clamp(7px,2vw,10px);
+
+    font-size:
+      clamp(7px,2vw,9px);
+  }
+}
+
+
+/* Narrow phones */
+@media (max-width:480px) {
+
+  .navbar {
+    gap:4px;
+
+    padding:
+      5px
+      6px;
+  }
+
+  .brand-mark {
+    width:27px;
+    height:27px;
+
+    font-size:9px;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    min-height:29px;
+
+    padding:
+      0
+      clamp(2px,1vw,5px);
+
+    font-size:
+      clamp(6.4px,1.85vw,8px);
+  }
+
+  .nav-links .contact-link {
+    min-height:30px;
+
+    margin-left:2px !important;
+
+    padding:
+      0
+      clamp(6px,1.8vw,8px);
+
+    font-size:
+      clamp(6.6px,1.9vw,8.2px);
+  }
+}
+
+
+/* Very small phones */
+@media (max-width:360px) {
+
+  .navbar {
+    gap:3px;
+
+    padding:
+      5px;
+  }
+
+  .brand-mark {
+    width:26px;
+    height:26px;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    padding:
+      0
+      2.5px;
+
+    font-size:6.4px;
+  }
+
+  .nav-links .contact-link {
+    margin-left:2px !important;
+
+    padding:
+      0
+      6px;
+
+    font-size:6.6px;
+  }
+}
+
+
 </style>
 
 <!-- =========================================================
