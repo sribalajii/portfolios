@@ -4547,6 +4547,125 @@ p {
 }
 
 
+
+
+/* =========================================================
+   MOBILE NAVIGATION — SHOW ALL LINKS
+   Keep SB logo + About + Projects + Skills + Experience + Contact
+   visible on phones without breaking the layout.
+========================================================= */
+
+@media (max-width:720px) {
+
+  .navbar {
+    gap:8px;
+    padding:
+      7px
+      9px;
+  }
+
+  .brand {
+    flex:0 0 auto;
+  }
+
+  .brand-mark {
+    width:31px;
+    height:31px;
+  }
+
+  /* Keep every navigation item visible */
+  .nav-links {
+    display:flex !important;
+    align-items:center;
+    justify-content:flex-start;
+
+    flex:1 1 auto;
+    min-width:0;
+
+    gap:2px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+    -webkit-overflow-scrolling:touch;
+
+    padding-bottom:1px;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display:none;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    display:inline-flex !important;
+
+    flex:0 0 auto;
+
+    min-height:34px;
+
+    padding:
+      0
+      9px;
+
+    font-size:
+      clamp(8px,2.6vw,10px);
+
+    white-space:nowrap;
+  }
+
+  .nav-links .contact-link {
+    margin-left:2px;
+
+    min-height:34px;
+
+    padding:
+      0
+      11px;
+  }
+}
+
+
+/* Extra-tight phones */
+@media (max-width:420px) {
+
+  .navbar {
+    gap:6px;
+    padding:
+      6px
+      7px;
+  }
+
+  .brand-mark {
+    width:29px;
+    height:29px;
+    font-size:10px;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    min-height:32px;
+
+    padding:
+      0
+      8px;
+
+    font-size:8.5px;
+  }
+
+  .nav-links .contact-link {
+    min-height:32px;
+
+    padding:
+      0
+      10px;
+  }
+}
+
+
 </style>
 
 <!-- =========================================================
