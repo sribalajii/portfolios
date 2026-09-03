@@ -4666,6 +4666,304 @@ p {
 }
 
 
+
+
+/* =========================================================
+   RESPONSIVE NAVIGATION — ALL DEVICE ALIGNMENT FIX
+   Proper layout for desktop, laptop, tablet and mobile.
+========================================================= */
+
+/* Base navbar alignment */
+.navbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand {
+  flex:0 0 auto;
+  min-width:0;
+}
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
+  min-width:0;
+}
+
+.nav-links a {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+@media (min-width:1440px) {
+
+  .navbar {
+    gap:18px;
+    padding:
+      7px
+      18px;
+  }
+
+  .nav-links {
+    gap:4px;
+  }
+
+  .nav-links a {
+    padding:
+      0
+      14px;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+========================================================= */
+@media (min-width:901px) and (max-width:1439px) {
+
+  .navbar {
+    gap:12px;
+    padding:
+      7px
+      14px;
+  }
+
+  .nav-links {
+    gap:2px;
+  }
+
+  .nav-links a {
+    padding:
+      0
+      11px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (min-width:721px) and (max-width:900px) {
+
+  .navbar {
+    gap:10px;
+    padding:
+      7px
+      10px;
+  }
+
+  .brand-mark {
+    width:32px;
+    height:32px;
+  }
+
+  .brand-name {
+    display:none;
+  }
+
+  .nav-links {
+    flex:1 1 auto;
+    justify-content:flex-end;
+    gap:2px;
+  }
+
+  .nav-links a {
+    min-height:35px;
+
+    padding:
+      0
+      9px;
+
+    font-size:
+      clamp(8.5px,1.6vw,10px);
+  }
+
+  .nav-links .contact-link {
+    margin-left:2px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width:720px) {
+
+  .nav-wrap {
+    padding-top:10px;
+  }
+
+  .navbar {
+    min-height:56px;
+
+    gap:8px;
+
+    padding:
+      7px
+      8px;
+
+    border-radius:18px;
+  }
+
+  .brand {
+    flex:0 0 auto;
+  }
+
+  .brand-mark {
+    width:30px;
+    height:30px;
+
+    font-size:10px;
+  }
+
+  .brand-name {
+    display:none;
+  }
+
+  .nav-links {
+    flex:1 1 auto;
+
+    min-width:0;
+
+    display:flex !important;
+
+    justify-content:flex-start;
+
+    gap:2px;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+    -webkit-overflow-scrolling:touch;
+
+    scroll-snap-type:x proximity;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display:none;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    display:inline-flex !important;
+
+    flex:0 0 auto;
+
+    min-height:33px;
+
+    padding:
+      0
+      8px;
+
+    font-size:
+      clamp(8px,2.35vw,9.5px);
+
+    scroll-snap-align:start;
+  }
+
+  .nav-links .contact-link {
+    margin-left:2px;
+
+    min-height:33px;
+
+    padding:
+      0
+      10px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+@media (max-width:480px) {
+
+  .navbar {
+    gap:6px;
+
+    padding:
+      6px
+      7px;
+  }
+
+  .brand-mark {
+    width:28px;
+    height:28px;
+  }
+
+  .nav-links {
+    gap:1px;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    min-height:31px;
+
+    padding:
+      0
+      7px;
+
+    font-size:
+      clamp(7.8px,2.45vw,8.8px);
+  }
+
+  .nav-links .contact-link {
+    min-height:31px;
+
+    padding:
+      0
+      9px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+@media (max-width:360px) {
+
+  .navbar {
+    gap:5px;
+
+    padding:
+      6px;
+  }
+
+  .brand-mark {
+    width:27px;
+    height:27px;
+  }
+
+  .nav-links a,
+  .nav-links a:not(.contact-link) {
+    padding:
+      0
+      6px;
+
+    font-size:7.7px;
+  }
+
+  .nav-links .contact-link {
+    padding:
+      0
+      8px;
+  }
+}
+
+
 </style>
 
 <!-- =========================================================
