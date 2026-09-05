@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sribalajii.github.io/portfolioo/sitemap.xml

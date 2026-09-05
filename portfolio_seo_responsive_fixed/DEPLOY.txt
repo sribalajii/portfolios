@@ -1,0 +1,26 @@
+DEPLOY ALL FILES IN THIS FOLDER TO THE ROOT OF YOUR GITHUB PAGES REPOSITORY.
+
+Required files:
+- index.html
+- favicon.svg
+- site.webmanifest
+- robots.txt
+- sitemap.xml
+- llms.txt
+
+Important:
+Your canonical site is configured as:
+https://sribalajii.github.io/portfolioo/
+
+After deployment, verify:
+https://sribalajii.github.io/portfolioo/
+https://sribalajii.github.io/portfolioo/favicon.svg
+https://sribalajii.github.io/portfolioo/site.webmanifest
+https://sribalajii.github.io/portfolioo/sitemap.xml
+https://sribalajii.github.io/portfolioo/llms.txt
+
+Note about robots.txt on GitHub Pages project sites:
+Search engines normally request robots.txt from the hostname root
+(https://sribalajii.github.io/robots.txt). A project repository can only
+directly publish files under /portfolioo/. The meta robots tag in index.html
+still provides page-level crawler guidance.
