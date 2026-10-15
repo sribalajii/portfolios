@@ -123,3 +123,8 @@
 .mbp-section .mbp-check-list {width:100%;flex-direction:row;justify-content:center;align-items:center;gap:5px}
 .mbp-section .mbp-check-item {flex:1;min-width:0;padding:5px 4px;gap:4px;font-size:9px;line-height:1.2;min-height:32px}
 .mbp-section .mbp-check-mark {height:15px;width:15px;flex:0 0 15px}
+/* All three backend layers stay legible in compact cards. */
+.mbp-section .mbp-stack {flex-direction:row;gap:4px;width:100%}
+.mbp-section .mbp-stack-line,
+.mbp-section .mbp-stack-line:nth-child(2),
+.mbp-section .mbp-stack-line:nth-child(3) {flex:1 1 0;width:auto;height:28px;min-width:0;font-size:8px;white-space:nowrap}
