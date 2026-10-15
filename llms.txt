@@ -1,6 +1,6 @@
 # Sribalaji I Portfolio
 
-Canonical URL: https://sribalajii.github.io/portfolioo/
+Canonical URL: https://sribalajii.github.io/portfolios/
 
 ## About
 Sribalaji I is a Software Developer and ML Developer working with Python, JavaScript, SQL, REST APIs, automation, computer vision, RAG systems, LLM integration, fine-tuning, and databases.

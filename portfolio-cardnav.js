@@ -53,9 +53,9 @@
 
 
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-  const validEntry=!window.location.hash || window.location.hash==='#home';
   const available=typeof nav.animate==='function' && typeof window.requestAnimationFrame==='function';
-  if(reduce || !validEntry || !available)return;
+  // Deep links should not disable the entrance; the hero can run on any load.
+  if(reduce || !available)return;
 
   let started=false;
   let fallbackId=0;
@@ -73,6 +73,7 @@
       try{a.cancel()}catch(_){}
     }
     window.clearTimeout(finishId);
+    window.clearTimeout(fallbackId);
   }
 
   function reveal(){
@@ -116,6 +117,9 @@
   // The hero's own animation fires this about halfway through the split flaps.
   window.addEventListener('portfolio:hero-midpoint',reveal,{once:true});
 
-  // Safety: navbar must never remain invisible if an unrelated intro fails.
-  fallbackId=window.setTimeout(reveal,6500);
+  // Reliable fallback is anchored to window load (when the hero intro begins).
+  // If a custom event is lost, still reveal the navbar without a long blank bar.
+  const scheduleFallback=()=>{if(!started)fallbackId=window.setTimeout(reveal,1700);};
+  if(document.readyState==='complete')scheduleFallback();
+  else window.addEventListener('load',scheduleFallback,{once:true});
 })();
