@@ -669,7 +669,7 @@ const LaserFlow = ({
       /* Deterministic scroll playback: scrolling backward rewinds the original beam,
          rather than running a second one-way intro timeline. */
       const p = Number(document.getElementById('contactScrollExpand')?.dataset.progressFine || 0);
-      state.introTime = clamp((p - 0.58) / 0.40, 0, 1) * INTRO_END;
+      state.introTime = clamp((p - 0.70) / 0.22, 0, 1) * INTRO_END;
       const s = settingsRef.current;
       resolveColor(s);
       const { width, height } = state;
@@ -876,17 +876,17 @@ const LaserFlow = ({
 const mountScrollLaser = () => {
   const root=document.getElementById('contactScrollExpand');
   const host=document.getElementById('contactLaserMount');
-  const target=root?.querySelector('.se-contact__laser-target');
+  const target=root?.querySelector('#digitalBusinessWallet .digital-wallet-pocket');
   const off=new URLSearchParams(window.location.search).get('scrollExpand')==='off';
   const motion=window.matchMedia('(min-width:901px) and (min-height:651px) and (prefers-reduced-motion:no-preference)');
   if(!root||!host||!target||off||!motion.matches||!window.React||!window.ReactDOM)return;
   const surfaceRef={current:target};
   const opts={
-    surfaceRef, beamPosition:.6,color:'#3847ff',intensity:1.8,
-    flare:1.5,spread:1.5,spill:1,fog:.2,dust:1.6,
-    beamWidth:1.5,streaks:1.5,dots:1,pulse:1.5,
-    speed:1.5,seed:3,mouseInteraction:true,intro:true,
-    revealRadius:220,revealOpacity:.6,theme:'dark'
+    surfaceRef,beamPosition:.6,color:'#3847ff',
+    intensity:1.02,beamWidth:1.05,flare:1.02,spread:1,
+    spill:.72,fog:.05,dust:.35,streaks:.9,dots:.45,
+    pulse:1.05,speed:1.05,seed:3,mouseInteraction:false,
+    intro:true,revealRadius:180,revealOpacity:0,theme:'dark'
   };
   let app=null;
   const update=()=>{
