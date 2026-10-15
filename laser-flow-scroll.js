@@ -1,4 +1,5 @@
 (()=>{'use strict';
+if(!window.React || !window.ReactDOM) return; // Graceful fallback when CDN resources are unavailable.
 /* React Bits LaserFlow (source: https://reactbits.dev/animations/laser-flow) adapted for CDN React and synchronized ScrollExpand. */
 
 const { useEffect, useRef } = window.React;
