@@ -9958,7 +9958,23 @@ button:focus-visible {
 <link rel="manifest" href="./site.webmanifest">
 <link rel="sitemap" type="application/xml" href="./sitemap.xml">
 
-<link rel="stylesheet" href="./magic-bento.css">
+<link rel="stylesheet" href="./magic-bento-original.css">
+<style id="contact-magic-bento-styles">
+.contact-bento-wrap{margin-bottom:clamp(42px,7vw,88px)}
+.contact-bento-header{max-width:880px;margin-bottom:clamp(24px,4vw,46px)}
+.contact-bento-eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#91c9e7;margin-bottom:16px}
+.contact-bento-header h2{font-size:clamp(32px,5.1vw,70px);line-height:1.08;letter-spacing:-.045em;margin-bottom:14px}
+.contact-bento-header h2 span{color:#8bd8f5}
+.contact-bento-header>p:not(.contact-bento-eyebrow){font-size:clamp(13px,1.25vw,17px);line-height:1.65;color:rgba(235,246,255,.7)}
+.contact-bento-react{width:100%;max-width:100%}
+.contact-bento-fallback{padding:24px;border-radius:20px;background:rgba(15,26,38,.6);border:1px solid rgba(200,232,255,.15);font-size:15px;line-height:1.7}
+.contact-bento-fallback a{color:#91ddfa;text-decoration:underline}
+.contact-bento-react .magic-bento{max-width:100%}
+.contact-bento-react .magic-bento__card{border:0}
+.contact-bento-react .magic-bento__title{font-family:inherit}
+@media(max-width:520px){.contact-bento-wrap{margin-bottom:34px}.contact-bento-header{margin-bottom:18px}.contact-bento-react .magic-bento__card{min-height:200px}}
+@media(prefers-reduced-motion:reduce){.contact-bento-react .magic-bento__cell{transition:none!important}}
+</style>
 </head>
 
 <body>
@@ -10433,67 +10449,6 @@ button:focus-visible {
 
     </div>
 
-    <!-- MagicBento-inspired capabilities: added BELOW the original About cards. -->
-    <div class="mbp-section" aria-labelledby="mbp-heading">
-      <div class="mbp-heading">
-        <div>
-          <p class="mbp-overline">How I build / 06 focus areas</p>
-          <h3 id="mbp-heading">From ideas to <span>working systems.</span></h3>
-        </div>
-        <p class="mbp-intro-copy">A closer look at the tools, workflows and engineering practices behind my software and AI projects.</p>
-      </div>
-
-      <div class="mbp-grid" id="aboutMagicBento">
-        <a class="mbp-card" href="#skills" aria-label="Explore my LLM and RAG skills">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">✦</span><span class="mbp-card-kicker">01 / Intelligence</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-model-map"><span class="mbp-chip">Data</span><span class="mbp-model-link"></span><span class="mbp-chip mbp-chip--lit">RAG</span><span class="mbp-model-link"></span><span class="mbp-chip">LLM</span></div></div>
-          <div><h4>LLMs &amp; RAG</h4><p>Local inference, retrieval pipelines and context-aware responses.</p></div>
-        </a>
-
-        <a class="mbp-card" href="#skills" aria-label="Explore my backend development skills">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">⌘</span><span class="mbp-card-kicker">02 / Foundation</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-stack"><div class="mbp-stack-line">Web / App Interface</div><div class="mbp-stack-line">FastAPI / REST</div><div class="mbp-stack-line">SQL / Redis</div></div></div>
-          <div><h4>Backend Systems</h4><p>Python services, APIs, databases and application integrations.</p></div>
-        </a>
-
-        <a class="mbp-card mbp-card--wide" href="#projects" aria-label="See my agentic AI and automation projects">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">◇</span><span class="mbp-card-kicker">03 / Orchestration</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-agent-canvas">
-            <div class="mbp-agent-column"><div class="mbp-agent-node">User Input</div></div>
-            <div class="mbp-agent-arrow">→</div>
-            <div class="mbp-agent-column mbp-agent-column--middle"><div class="mbp-agent-node mbp-agent-node--core">Agent Router</div><div class="mbp-agent-node">State / Context</div></div>
-            <div class="mbp-agent-arrow">→</div>
-            <div class="mbp-agent-column mbp-agent-column--tools"><div class="mbp-agent-node">Search &amp; RAG</div><div class="mbp-agent-node">Tools &amp; APIs</div><div class="mbp-agent-node">Response</div></div>
-          </div></div>
-          <div><h4>Agentic AI Workflows</h4><p>Structured state machines, tool routing and multi-step reasoning flows.</p></div>
-        </a>
-
-        <a class="mbp-card mbp-card--wide" href="#projects" aria-label="View projects covering build and delivery workflows">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">↗</span><span class="mbp-card-kicker">04 / Execution</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-pipeline">
-            <div class="mbp-pipe-step" style="--step:0"><span class="mbp-pipe-symbol">1</span> Define the problem <small>PLAN</small></div>
-            <div class="mbp-pipe-step" style="--step:1"><span class="mbp-pipe-symbol">2</span> Build the solution <small>CODE</small></div>
-            <div class="mbp-pipe-step" style="--step:2"><span class="mbp-pipe-symbol">3</span> Test and refine <small>VERIFY</small></div>
-            <div class="mbp-pipe-step" style="--step:3"><span class="mbp-pipe-symbol">4</span> Integrate and iterate <small>SHIP</small></div>
-          </div></div>
-          <div><h4>Automation &amp; Delivery</h4><p>Connecting practical tools into maintainable, end-to-end workflows.</p></div>
-        </a>
-
-        <a class="mbp-card" href="#projects" aria-label="See my voice AI and real-time integration projects">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">◉</span><span class="mbp-card-kicker">05 / Interaction</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-waveform">
-            <span style="--h:10;--i:0"></span><span style="--h:23;--i:1"></span><span style="--h:43;--i:2"></span><span style="--h:25;--i:3"></span><span style="--h:55;--i:4"></span><span style="--h:37;--i:5"></span><span style="--h:51;--i:6"></span><span style="--h:24;--i:7"></span><span style="--h:38;--i:8"></span><span style="--h:17;--i:9"></span><span style="--h:9;--i:10"></span>
-          </div></div>
-          <div><h4>Voice &amp; Real Time</h4><p>Speech pipelines, LiveKit experiments and streaming AI interactions.</p></div>
-        </a>
-
-        <a class="mbp-card" href="#experience" aria-label="Read about my engineering practices and experience">
-          <div class="mbp-card-top"><span class="mbp-card-icon" aria-hidden="true">✓</span><span class="mbp-card-kicker">06 / Quality</span></div>
-          <div class="mbp-visual" aria-hidden="true"><div class="mbp-check-list"><div class="mbp-check-item"><span class="mbp-check-mark">✓</span> Validation</div><div class="mbp-check-item"><span class="mbp-check-mark">✓</span> Error handling</div><div class="mbp-check-item"><span class="mbp-check-mark">✓</span> Testing &amp; feedback</div></div></div>
-          <div><h4>Engineering Practices</h4><p>Reliable defaults, clear APIs and incremental improvement.</p></div>
-        </a>
-      </div>
-    </div>
 
   </div>
 
@@ -11533,6 +11488,18 @@ button:focus-visible {
   class="container contact-section"
   id="contact"
 >
+
+  <!-- ReactBits Magic Bento: original live interactive card component in Contact. -->
+  <div class="contact-bento-wrap" aria-labelledby="contactBentoTitle">
+    <div class="contact-bento-header">
+      <p class="contact-bento-eyebrow">07 / CONNECT · HOW I WORK</p>
+      <h2 id="contactBentoTitle">Ideas become <span>real systems.</span></h2>
+      <p>Hover to explore. Click any card to replay its interactive animation.</p>
+    </div>
+    <div id="contactMagicReact" class="contact-bento-react" aria-label="Interactive overview of my work and collaboration">
+      <div class="contact-bento-fallback">My work includes software development, machine learning, RAG, API integrations, automation, engineering and collaboration. <a href="mailto:isribalaji335@gmail.com">Get in touch</a>.</div>
+    </div>
+  </div>
 
   <div class="contact-card">
 
@@ -14626,6 +14593,8 @@ body {
 </script>
 
 
-<script src="./magic-bento.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" defer crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" defer crossorigin="anonymous"></script>
+<script src="./magic-bento-exact.js" defer></script>
 </body>
 </html>
