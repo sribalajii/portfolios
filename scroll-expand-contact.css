@@ -17,3 +17,43 @@
 .se-contact__media,.se-contact__scrim,.se-contact__title,.se-contact__hint{display:none!important}
 .se-contact .contact-card{opacity:1!important;transform:none!important;pointer-events:auto!important}
 }
+
+/* Live Contact ScrollExpand + scroll-synchronized LaserFlow */
+.se-contact__laser-target, .se-contact__laser {display:none}
+@media (min-width:901px) and (min-height:651px) and (prefers-reduced-motion:no-preference) {
+  .se-contact.se-contact--active .se-contact__laser-target {
+    display:block;position:absolute;z-index:2;pointer-events:none;
+    left:18%;right:28%;top:52%;bottom:-24px;border-radius:14px;
+    background:transparent;
+  }
+  .se-contact.se-contact--active .se-contact__laser {
+    display:block;position:absolute;inset:0;z-index:3;
+    width:100%;height:100%;pointer-events:none;
+    opacity:var(--contact-laser-alpha,0);
+    mix-blend-mode:screen;
+    will-change:opacity;
+    mask-image:linear-gradient(90deg,transparent 3%,rgba(0,0,0,.45) 30%,#000 52%,#000 94%);
+    -webkit-mask-image:linear-gradient(90deg,transparent 3%,rgba(0,0,0,.45) 30%,#000 52%,#000 94%);
+  }
+  .se-contact__laser .laser-flow-container,
+  .se-contact__laser .laser-flow-canvas {
+    position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none;
+  }
+  .se-contact.se-contact--active .se-contact__hint {
+    color:rgba(239,248,255,.90);font-size:clamp(12px,.9vw,14px);
+    text-shadow:0 1px 12px rgba(0,0,0,.82),0 0 9px rgba(127,214,246,.3);
+  }
+}
+@media (max-width:900px),(max-height:650px),(prefers-reduced-motion:reduce) {
+  .se-contact__laser-target,.se-contact__laser{display:none!important}
+}
+/* Increased visibility of the original footer text and links by ~20 percentage points */
+.footer {color:rgba(255,255,255,.58)}
+.footer .footer-links a {
+  color:rgba(240,249,255,.82);font-size:clamp(10px,.85vw,12px);
+  text-decoration:none;text-underline-offset:3px;
+}
+.footer .footer-links a:hover,.footer .footer-links a:focus-visible{
+  color:#fff;text-decoration:underline;
+  text-shadow:0 0 13px rgba(122,199,255,.55)
+}
