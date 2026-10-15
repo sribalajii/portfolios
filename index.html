@@ -11753,9 +11753,7 @@ button:focus-visible {
 
       </svg>
 
-      <!-- Soft light lives IN the pouch, behind the stitching/text and the raised card. -->
-      <div class="wallet-pouch-glow" aria-hidden="true"></div>
-      <div id="contactLaserMount" class="wallet-laser-mount" aria-hidden="true"></div>
+
 
 
       <div class="digital-wallet-pocket-content">
@@ -12554,6 +12552,9 @@ button:focus-visible {
       contactGlow.classList.remove(
         "intro-running"
       );
+
+      // The visual glow finishes before CardNav's one-time introduction.
+      window.dispatchEvent(new Event("portfolio:contact-glow-complete"));
 
     }
 
@@ -14656,7 +14657,6 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" defer crossorigin="anonymous"></script>
 <script src="./magic-bento-exact.js" defer></script>
 <script src="./scroll-expand-contact.js" defer></script>
-<script src="./laser-flow-scroll.js" defer></script>
 <script src="./portfolio-cardnav.js" defer></script>
 </body>
 </html>
