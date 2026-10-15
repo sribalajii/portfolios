@@ -25,3 +25,127 @@
     will-change:auto;
   }
 }
+
+
+/* PillNav hover effect (itemStyle=pill, hoverEffect=fill, indicator=dot).
+   Adapted solely to the EXISTING navbar anchors; no layout/size overrides. */
+.navbar .nav-links a.pn-hover-item {
+  --pn-roll:calc(1.8em + 6px);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  outline-offset:2px;
+  -webkit-tap-highlight-color:transparent;
+}
+/* The original link width is determined by .pn-face's unchanged text. */
+.navbar .nav-links a.pn-hover-item .pn-face {
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  pointer-events:none;
+  transform:translateY(0);
+  transition:transform .40s cubic-bezier(.22,1,.36,1);
+}
+.navbar .nav-links a.pn-hover-item .pn-face-alt {
+  position:absolute;
+  z-index:2;
+  inset:0;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  white-space:nowrap;
+  pointer-events:none;
+  color:#0b1b28;
+  transform:translateY(var(--pn-roll));
+  transition:transform .50s cubic-bezier(.22,1,.36,1);
+}
+.navbar .nav-links a.pn-hover-item .pn-fill {
+  position:absolute;
+  top:100%;
+  left:50%;
+  width:220%;
+  height:220%;
+  margin:-110% 0 0 -110%;
+  z-index:1;
+  border-radius:50%;
+  pointer-events:none;
+  background:linear-gradient(180deg,#f4f4f5 0%,#d9f0fc 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 5px 16px -7px rgba(72,160,215,.3);
+  transform:scale(0);
+  transition:transform .38s cubic-bezier(.4,0,.2,1);
+}
+.navbar .nav-links a.contact-link.pn-hover-item .pn-fill {
+  background:linear-gradient(180deg,#e9f9ff 0%,#b4e5fa 100%);
+}
+/* Reserve the previous original button design; only fill the inside on hover.
+   This also overrides the old generic:hover background on the Contact CTA. */
+@media (hover:hover) {
+  .navbar .nav-links a.pn-hover-item:not(.contact-link):hover {
+    background:transparent;
+    box-shadow:none;
+  }
+  .navbar .nav-links a.pn-hover-item.contact-link:hover {
+    color:#0b1218;
+    background:linear-gradient(145deg,rgba(241,251,255,.98),rgba(194,228,243,.94));
+  }
+  .navbar .nav-links a.pn-hover-item:hover .pn-fill {
+    transform:scale(1);
+    transition:transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  .navbar .nav-links a.pn-hover-item:hover .pn-face {
+    transform:translateY(calc(var(--pn-roll) * -1));
+    transition-duration:.50s;
+  }
+  .navbar .nav-links a.pn-hover-item:hover .pn-face-alt {
+    transform:translateY(0);
+  }
+}
+.navbar .nav-links a.pn-hover-item:focus-visible {
+  outline:2px solid rgba(171,225,249,.95);
+}
+.navbar .nav-links a.pn-hover-item:focus-visible .pn-fill {
+  transform:scale(1);
+}
+.navbar .nav-links a.pn-hover-item:focus-visible .pn-face {
+  transform:translateY(calc(var(--pn-roll) * -1));
+}
+.navbar .nav-links a.pn-hover-item:focus-visible .pn-face-alt {
+  transform:translateY(0);
+}
+/* Indicator dot: tracks the selected anchor without creating extra buttons. */
+.navbar .nav-links a.pn-hover-item::after {
+  position:absolute;
+  content:"";
+  z-index:3;
+  width:4px;
+  height:4px;
+  bottom:2px;
+  left:calc(50% - 2px);
+  background:#f6fbff;
+  border-radius:999px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+.navbar .nav-links a.contact-link.pn-hover-item::after {
+  background:#163b50;
+}
+.navbar .nav-links a.pn-hover-item[data-pn-active]::after {
+  opacity:1;
+}
+@media (prefers-reduced-motion:reduce){
+  .navbar .nav-links a.pn-hover-item .pn-fill,
+  .navbar .nav-links a.pn-hover-item .pn-face,
+  .navbar .nav-links a.pn-hover-item .pn-face-alt,
+  .navbar .nav-links a.pn-hover-item::after{
+    transition:none!important;
+  }
+  .navbar .nav-links a.pn-hover-item .pn-face-alt{display:none}
+  .navbar .nav-links a.pn-hover-item .pn-face{transform:none!important}
+  .navbar .nav-links a.pn-hover-item:is(:hover,:focus-visible) .pn-face{
+    color:#102430;
+  }
+}
