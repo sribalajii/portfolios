@@ -12261,6 +12261,11 @@ button:focus-visible {
 
     splitFlap.replaceChildren();
 
+    // Reveal the existing navbar while HI EVERYONE is still flipping,
+    // rather than after the later Contact glow completes.
+    window.setTimeout(() => {
+      window.dispatchEvent(new Event("portfolio:hero-midpoint"));
+    }, 740);
 
     const characters =
       Array.from(
@@ -12512,7 +12517,7 @@ button:focus-visible {
         "intro-running"
       );
 
-      // The visual glow finishes before CardNav's one-time introduction.
+      // Contact glow finishes independently; navbar already appeared mid-hero.
       window.dispatchEvent(new Event("portfolio:contact-glow-complete"));
 
     }
