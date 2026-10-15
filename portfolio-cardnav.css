@@ -1,84 +1,27 @@
-/* CardNav "rise" effect adapted to Sribalaji's EXISTING navbar.
-   The original .navbar, .brand, .nav-links and Contact CTA are not replaced. */
-.nav-wrap>.container{position:relative}
-.portfolio-card-nav{
-  --cn-max:800px;--cn-card:176px;--cn-gap:8px;
-  position:absolute;top:calc(100% + 5px);right:0;
-  z-index:30;width:min(var(--cn-max),calc(100% - 12px));
-  box-sizing:border-box;pointer-events:none;
-  opacity:0;visibility:hidden;
-  transform:translate3d(0,-12px,0) scale(.985);
-  transform-origin:top right;
-  transition:opacity .3s ease,transform .52s cubic-bezier(.22,1,.36,1),visibility .3s;
+/* React Bits CardNav intro adaptation: entrance-only on EXISTING Sribalaji navbar.
+   No dropdown, duplicate navigation, extra cards, or visual theme overrides. */
+
+/* Added by JS only when animation support is present and the original intro
+   has not yet finished. If JavaScript fails to load, navbar remains visible. */
+.navbar.cardnav-intro-waiting{
+  visibility:hidden;
+  pointer-events:none;
 }
-.portfolio-card-nav[data-open]{
-  opacity:1;visibility:visible;pointer-events:auto;
-  transform:translate3d(0,0,0) scale(1);
-}
-.portfolio-card-nav[hidden]{display:none!important}
-.portfolio-card-nav__cards{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:var(--cn-gap);box-sizing:border-box;padding:8px;
-  border:1px solid rgba(170,218,243,.19);border-radius:20px;
-  background:linear-gradient(145deg,rgba(12,24,37,.96),rgba(12,17,32,.94));
-  backdrop-filter:blur(20px) saturate(1.6);
-  -webkit-backdrop-filter:blur(20px) saturate(1.6);
-  box-shadow:0 24px 48px -18px rgba(0,0,0,.72),inset 0 1px rgba(255,255,255,.10);
-}
-.portfolio-card-nav__card{
-  display:flex;flex-direction:column;gap:15px;
-  min-width:0;min-height:var(--cn-card);
-  border-radius:12px;padding:16px 16px 14px;box-sizing:border-box;
-  color:#eff9ff;background:linear-gradient(166deg,rgba(37,61,82,.84),rgba(13,29,45,.89));
-  box-shadow:inset 0 1px rgba(255,255,255,.14),inset 0 0 0 1px rgba(158,204,233,.08),
-             0 5px 18px -7px rgba(0,0,0,.50);
-  transform-origin:50% 0;
-}
-.portfolio-card-nav__card:nth-child(2){
-  background:linear-gradient(168deg,rgba(31,57,76,.82),rgba(16,26,47,.90));
-}
-.portfolio-card-nav__card:nth-child(3){
-  background:linear-gradient(169deg,rgba(25,66,83,.83),rgba(15,37,55,.9));
-}
-.portfolio-card-nav__head{display:flex;flex-direction:column;gap:5px}
-.portfolio-card-nav__label{font-size:17px;font-weight:650;letter-spacing:-.015em}
-.portfolio-card-nav__description{
-  margin:0;color:rgba(226,241,250,.68);font-size:13px;line-height:1.45
-}
-.portfolio-card-nav__links{
-  display:flex;flex-direction:column;gap:5px;
-  list-style:none;margin:auto 0 0;padding:0
-}
-.portfolio-card-nav__link{
-  display:inline-flex;align-items:center;gap:8px;width:fit-content;
-  color:rgba(235,248,255,.87);font-size:14px;font-weight:500;
-  text-decoration:none;padding:4px 2px;border-radius:5px;
-  transition:color .2s ease
-}
-.portfolio-card-nav__link:hover{color:#fff}
-.portfolio-card-nav__link:focus-visible{
-  outline:2px solid #9edcf5;outline-offset:3px
-}
-.portfolio-card-nav__arrow{display:inline-block;transition:transform .32s cubic-bezier(.22,1,.36,1)}
-.portfolio-card-nav__link:hover .portfolio-card-nav__arrow{
-  transform:translate(3px,-3px)
-}
-/* Keep the original Contact button design; light up its existing surface
-   only while its expanding CardNav popup is open. */
-.navbar .contact-link[data-cardnav-open]{
-  box-shadow:0 0 0 1px rgba(213,241,252,.55),
-             0 0 19px rgba(106,200,241,.30),
-             inset 0 1px rgba(255,255,255,.78);
-}
-@media(max-width:720px){
-  .portfolio-card-nav{right:0;width:min(400px,calc(100% - 4px))}
-  .portfolio-card-nav__cards{grid-template-columns:1fr;max-height:min(70dvh,520px);overflow:auto;overscroll-behavior:contain}
-  .portfolio-card-nav__card{min-height:0;padding:13px 14px 12px;gap:9px}
-  .portfolio-card-nav__links{flex-direction:row;flex-wrap:wrap;gap:5px 16px}
-  .portfolio-card-nav__label{font-size:16px}
-  .portfolio-card-nav__description{font-size:12px}
-  .portfolio-card-nav__link{font-size:13px}
+
+/* While playing, the real navbar is revealed through its existing rounded
+   capsule. Its background, brand and controls remain entirely unchanged. */
+.navbar.cardnav-intro-playing{
+  isolation:isolate;
+  pointer-events:none;
+  will-change:clip-path,opacity;
 }
 @media(prefers-reduced-motion:reduce){
-  .portfolio-card-nav,.portfolio-card-nav__link,.portfolio-card-nav__arrow{transition:none!important}
+  .navbar.cardnav-intro-waiting{
+    visibility:visible;
+    pointer-events:auto;
+  }
+  .navbar.cardnav-intro-playing{
+    pointer-events:auto;
+    will-change:auto;
+  }
 }
