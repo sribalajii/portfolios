@@ -1,101 +1,77 @@
-/* React Bits CardNav: one-time automatic 'rise' intro once HERO Contact glow finishes.
-   Preserves the original navbar HTML/visuals; standard click navigation remains available.
-   Settings: openOn=click, surface=glass, stagger=.12, bounce=.2, speed=1,
-   cardHeight=176, maxWidth=800, intro=true. */
+/* React Bits CardNav (intro only) synchronized to the existing hero sequence.
+   Sequence: split-flap "HI EVERYONE" -> 2600ms Contact button glow ->
+   original navbar reveals from a centred capsule into its current full width.
+   Uses the React Bits intro timing (820ms panel, 560ms children, 70ms stagger).
+   The existing navbar and Contact button always keep their original functions.
+   Intro runs at most once per page load; no dropdown or repeat on click. */
 (()=>{'use strict';
-const panel=document.getElementById('portfolioCardNav');
-const contact=document.getElementById('contactNavTrigger');
-if(!panel||!contact)return;
-const cards=Array.from(panel.querySelectorAll('.portfolio-card-nav__card'));
-const reduce=window.matchMedia('(prefers-reduced-motion:reduce)');
-let open=false, cinematicUsed=false, hideTimer=0, autoCloseTimer=0, autoOpened=false;
+  const nav=document.querySelector('.nav-wrap .navbar');
+  if(!nav)return;
 
-function clearTimers(){
-  window.clearTimeout(hideTimer);
-  window.clearTimeout(autoCloseTimer);
-}
-function runCinematicIntro(){
-  if(reduce.matches)return;
-  // One-time CardNav spring/rise sequence; never replay on subsequent clicks.
-  if(typeof panel.animate==='function'){
-    panel.animate([
-      {clipPath:'inset(0% 49% 0% 49% round 40px)',opacity:.35},
-      {clipPath:'inset(0% 0% 0% 0% round 20px)',opacity:1}
-    ],{duration:820,easing:'cubic-bezier(.22,1,.36,1)'});
+  const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  const validEntry=!window.location.hash || window.location.hash==='#home';
+  const available=typeof nav.animate==='function' && typeof window.requestAnimationFrame==='function';
+  if(reduce || !validEntry || !available)return;
+
+  let started=false;
+  let fallbackId=0;
+  let finishId=0;
+  const animated=[];
+
+  // Keep the original navbar's footprint so it doesn't push or move the hero.
+  nav.classList.add('cardnav-intro-waiting');
+
+  function restore(){
+    nav.classList.remove('cardnav-intro-waiting','cardnav-intro-playing');
+    nav.style.removeProperty('pointer-events');
+    nav.style.removeProperty('will-change');
+    for(const a of animated){
+      try{a.cancel()}catch(_){}
+    }
+    window.clearTimeout(finishId);
   }
-  cards.forEach((card,index)=>{
-    card.getAnimations().forEach(a=>a.cancel());
-    card.animate([
-      {opacity:0,transform:'translateY(26px) scale(.97)'},
-      {opacity:1,transform:'translateY(-3px) scale(1.004)',offset:.80},
-      {opacity:1,transform:'translateY(0) scale(1)'}
-    ],{duration:680,delay:index*120,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});
-  });
-}
-function setOpen(next,{cinematic=false,automatic=false}={}){
-  if(next===open)return;
-  open=next;
-  clearTimers();
-  if(next){
-    panel.hidden=false;
-    panel.removeAttribute('inert');
-    contact.dataset.cardnavOpen='';
-    contact.setAttribute('aria-expanded','true');
-    autoOpened=automatic;
-    requestAnimationFrame(()=>{
-      if(!open)return;
-      panel.dataset.open='';
-      if(cinematic)runCinematicIntro();
+
+  function reveal(){
+    if(started)return;
+    started=true;
+    window.clearTimeout(fallbackId);
+    // Measure live navbar dimensions (works on desktop, tablet and mobile).
+    const width=nav.getBoundingClientRect().width;
+    const height=nav.getBoundingClientRect().height;
+    if(width<1||height<1){restore();return;}
+    const edge=Math.max(0,(width-height)/2);
+    const radius=Number.parseFloat(getComputedStyle(nav).borderTopLeftRadius)||20;
+    const ease='cubic-bezier(0.22, 1, 0.36, 1)';
+
+    nav.classList.remove('cardnav-intro-waiting');
+    nav.classList.add('cardnav-intro-playing');
+
+    // Same clip-path expansion as React Bits CardNav "intro":
+    // central capsule -> entire existing glass navbar.
+    const main=nav.animate([
+      {clipPath:`inset(0px ${edge}px round ${height/2}px)`, opacity:0},
+      {clipPath:`inset(0px 0px round ${radius}px)`, opacity:1}
+    ],{duration:820,easing:ease,fill:'backwards'});
+    animated.push(main);
+
+    // Retain all current links; only fade/raise them once into view.
+    const children=[nav.querySelector('.brand'),...nav.querySelectorAll('.nav-links a')].filter(Boolean);
+    children.forEach((el,i)=>{
+      animated.push(el.animate([
+        {opacity:0,transform:'translateY(8px)'},
+        {opacity:1,transform:'translateY(0)'}
+      ],{duration:560,delay:220+i*70,easing:ease,fill:'backwards'}));
     });
-  }else{
-    panel.removeAttribute('data-open');
-    panel.setAttribute('inert','');
-    contact.removeAttribute('data-cardnav-open');
-    contact.setAttribute('aria-expanded','false');
-    cards.forEach(card=>card.getAnimations().forEach(a=>a.cancel()));
-    autoOpened=false;
-    hideTimer=window.setTimeout(()=>{if(!open)panel.hidden=true},reduce.matches?0:330);
-  }
-}
-// The existing HERO Contact glow emits this event exactly when its 2600ms sequence ends.
-window.addEventListener('portfolio:contact-glow-complete',()=>{
-  if(cinematicUsed)return;
-  cinematicUsed=true;
-  if(reduce.matches||open)return;
-  setOpen(true,{cinematic:true,automatic:true});
-  // Introduction is self-contained: the cards close again without changing the URL.
-  autoCloseTimer=window.setTimeout(()=>{
-    if(autoOpened&&open&&!panel.matches(':hover'))setOpen(false);
-  },4200);
-},{once:true});
 
-// Preserve the existing Contact action: while the menu is open, Contact navigates
-// to #contact. When closed, clicking opens the glass cards without intro replay.
-contact.addEventListener('click',event=>{
-  if(open){setOpen(false);return}
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  setOpen(true);
-},true);
-panel.addEventListener('click',event=>{
-  if(event.target.closest('a'))setOpen(false);
-});
-panel.addEventListener('pointerenter',()=>{
-  if(autoOpened)window.clearTimeout(autoCloseTimer);
-});
-panel.addEventListener('pointerleave',()=>{
-  if(autoOpened&&open)autoCloseTimer=window.setTimeout(()=>{
-    if(open&&autoOpened)setOpen(false);
-  },1150);
-});
-document.addEventListener('pointerdown',event=>{
-  if(!open)return;
-  if(panel.contains(event.target)||contact.contains(event.target))return;
-  setOpen(false);
-});
-document.addEventListener('keydown',event=>{
-  if(!open||event.key!=='Escape')return;
-  setOpen(false);contact.focus();
-});
-window.addEventListener('hashchange',()=>{if(open)setOpen(false)});
+    // Always clean up; never leave a clip-path or a disabled navbar behind.
+    const finished=Promise.allSettled(animated.map(a=>a.finished));
+    finished.then(restore);
+    finishId=window.setTimeout(restore,1800);
+  }
+
+  // Important: the main HTML fires this exactly as its existing glow ends.
+  window.addEventListener('portfolio:contact-glow-complete',reveal,{once:true});
+
+  // Safety: navbar must never remain invisible if an unrelated intro fails.
+  fallbackId=window.setTimeout(reveal,15000);
 })();
