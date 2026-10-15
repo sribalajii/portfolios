@@ -9975,6 +9975,7 @@ button:focus-visible {
 @media(max-width:520px){.contact-bento-wrap{margin-bottom:34px}.contact-bento-header{margin-bottom:18px}.contact-bento-react .magic-bento__card{min-height:200px}}
 @media(prefers-reduced-motion:reduce){.contact-bento-react .magic-bento__cell{transition:none!important}}
 </style>
+<link rel="stylesheet" href="./scroll-expand-contact.css">
 </head>
 
 <body>
@@ -11501,6 +11502,14 @@ button:focus-visible {
     </div>
   </div>
 
+  <!-- Experimental ScrollExpand wrapper; existing Contact card preserved. -->
+  <div class="se-contact" id="contactScrollExpand" data-scroll-expand="live">
+    <div class="se-contact__track"><div class="se-contact__stage"><div class="se-contact__frame">
+      <div class="se-contact__media" aria-hidden="true"></div>
+      <div class="se-contact__scrim" aria-hidden="true"></div>
+      <!-- LaserFlow is visually restricted to the revealed Contact card. -->
+      <div class="se-contact__laser-target" aria-hidden="true"></div>
+      <div class="se-contact__laser" id="contactLaserMount" aria-hidden="true"></div>
   <div class="contact-card">
 
     <div class="contact-wallet-host contact-card-content">
@@ -11738,6 +11747,12 @@ button:focus-visible {
 
 </div>
 
+  </div>
+
+    </div>
+      <div class="se-contact__title" aria-hidden="true">Let's build something useful.</div>
+      <div class="se-contact__hint" aria-hidden="true">Scroll to explore</div>
+    </div></div>
   </div>
 
 </section>
@@ -14596,5 +14611,7 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" defer crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js" defer crossorigin="anonymous"></script>
 <script src="./magic-bento-exact.js" defer></script>
+<script src="./scroll-expand-contact.js" defer></script>
+<script src="./laser-flow-scroll.js" defer></script>
 </body>
 </html>
