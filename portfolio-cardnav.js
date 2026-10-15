@@ -44,7 +44,7 @@
     window.addEventListener('hashchange',updateActive);
     // The site's smooth-scroll handler uses history.replaceState (no hashchange).
     nav.addEventListener('click',event=>{
-      if(event.target.closest('.nav-links a'))requestAnimationFrame(updateActive);
+      if(event.target.closest('.nav-links a, .brand'))requestAnimationFrame(updateActive);
     });
     // Keep indicators correct after back/forward navigation.
     window.addEventListener('popstate',updateActive);
