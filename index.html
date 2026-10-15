@@ -9976,6 +9976,7 @@ button:focus-visible {
 @media(prefers-reduced-motion:reduce){.contact-bento-react .magic-bento__cell{transition:none!important}}
 </style>
 <link rel="stylesheet" href="./scroll-expand-contact.css">
+<link rel="stylesheet" href="./portfolio-cardnav.css">
 </head>
 
 <body>
@@ -10073,6 +10074,10 @@ button:focus-visible {
         <a
           href="#contact"
           class="contact-link"
+          id="contactNavTrigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="portfolioCardNav"
         >
           Contact
         </a>
@@ -10080,6 +10085,44 @@ button:focus-visible {
       </div>
 
     </nav>
+
+    <!-- CardNav rise: only the expanding glass cards are added below the original bar. -->
+    <div id="portfolioCardNav" class="portfolio-card-nav" aria-label="Quick navigation"
+         hidden inert>
+      <div class="portfolio-card-nav__cards">
+        <section class="portfolio-card-nav__card" aria-label="About links">
+          <div class="portfolio-card-nav__head">
+            <span class="portfolio-card-nav__label">About</span>
+            <p class="portfolio-card-nav__description">The developer and the skills behind the work.</p>
+          </div>
+          <ul class="portfolio-card-nav__links">
+            <li><a class="portfolio-card-nav__link" href="#about"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>My story</a></li>
+            <li><a class="portfolio-card-nav__link" href="#skills"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>Skills & tools</a></li>
+          </ul>
+        </section>
+        <section class="portfolio-card-nav__card" aria-label="Projects links">
+          <div class="portfolio-card-nav__head">
+            <span class="portfolio-card-nav__label">Projects</span>
+            <p class="portfolio-card-nav__description">Software, ML applications and real-world builds.</p>
+          </div>
+          <ul class="portfolio-card-nav__links">
+            <li><a class="portfolio-card-nav__link" href="#projects"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>Selected work</a></li>
+            <li><a class="portfolio-card-nav__link" href="#experience"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>Experience</a></li>
+          </ul>
+        </section>
+        <section class="portfolio-card-nav__card" aria-label="Contact links">
+          <div class="portfolio-card-nav__head">
+            <span class="portfolio-card-nav__label">Contact</span>
+            <p class="portfolio-card-nav__description">Let’s build something useful together.</p>
+          </div>
+          <ul class="portfolio-card-nav__links">
+            <li><a class="portfolio-card-nav__link" href="#contact"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>Contact panel</a></li>
+            <li><a class="portfolio-card-nav__link" href="mailto:isribalaji335@gmail.com"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>Email</a></li>
+            <li><a class="portfolio-card-nav__link" href="https://linkedin.com/in/sribalaj-i" target="_blank" rel="noopener noreferrer"><span class="portfolio-card-nav__arrow" aria-hidden="true">↗</span>LinkedIn</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
 
   </div>
 
@@ -11507,9 +11550,6 @@ button:focus-visible {
     <div class="se-contact__track"><div class="se-contact__stage"><div class="se-contact__frame">
       <div class="se-contact__media" aria-hidden="true"></div>
       <div class="se-contact__scrim" aria-hidden="true"></div>
-      <!-- LaserFlow is visually restricted to the revealed Contact card. -->
-      <div class="se-contact__laser-target" aria-hidden="true"></div>
-      <div class="se-contact__laser" id="contactLaserMount" aria-hidden="true"></div>
   <div class="contact-card">
 
     <div class="contact-wallet-host contact-card-content">
@@ -11712,6 +11752,10 @@ button:focus-visible {
         ></path>
 
       </svg>
+
+      <!-- Soft light lives IN the pouch, behind the stitching/text and the raised card. -->
+      <div class="wallet-pouch-glow" aria-hidden="true"></div>
+      <div id="contactLaserMount" class="wallet-laser-mount" aria-hidden="true"></div>
 
 
       <div class="digital-wallet-pocket-content">
@@ -14613,5 +14657,6 @@ body {
 <script src="./magic-bento-exact.js" defer></script>
 <script src="./scroll-expand-contact.js" defer></script>
 <script src="./laser-flow-scroll.js" defer></script>
+<script src="./portfolio-cardnav.js" defer></script>
 </body>
 </html>
