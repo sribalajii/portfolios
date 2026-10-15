@@ -1,12 +1,56 @@
 /* React Bits CardNav (intro only) synchronized to the existing hero sequence.
-   Sequence: split-flap "HI EVERYONE" -> 2600ms Contact button glow ->
+   Sequence: split-flap "HI EVERYONE" reaches midpoint ->
    original navbar reveals from a centred capsule into its current full width.
+   The existing Contact button glow continues independently afterwards.
    Uses the React Bits intro timing (820ms panel, 560ms children, 70ms stagger).
    The existing navbar and Contact button always keep their original functions.
    Intro runs at most once per page load; no dropdown or repeat on click. */
 (()=>{'use strict';
   const nav=document.querySelector('.nav-wrap .navbar');
   if(!nav)return;
+
+  // PillNav hover/fill/roll/dot, adapted to the original navbar links.
+  // Adds only child spans: existing anchors, hrefs, dimensions and CSS glass stay.
+  function setupPillNavHover(){
+    const links=[...nav.querySelectorAll('.nav-links a[href^="#"]')];
+    for(const link of links){
+      if(link.dataset.pnReady)continue;
+      const label=link.textContent.trim();
+      if(!label)continue;
+      const fill=document.createElement('span');
+      fill.className='pn-fill';
+      fill.setAttribute('aria-hidden','true');
+      const face=document.createElement('span');
+      face.className='pn-face';
+      face.textContent=label;
+      const alternate=document.createElement('span');
+      alternate.className='pn-face-alt';
+      alternate.textContent=label;
+      alternate.setAttribute('aria-hidden','true');
+      link.replaceChildren(fill,face,alternate);
+      link.classList.add('pn-hover-item');
+      link.dataset.pnReady='1';
+    }
+    const updateActive=()=>{
+      const active=window.location.hash;
+      links.forEach(link=>{
+        const on=Boolean(active&&active!=='#home'&&link.getAttribute('href')===active);
+        link.toggleAttribute('data-pn-active',on);
+        if(on)link.setAttribute('aria-current','location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    updateActive();
+    window.addEventListener('hashchange',updateActive);
+    // The site's smooth-scroll handler uses history.replaceState (no hashchange).
+    nav.addEventListener('click',event=>{
+      if(event.target.closest('.nav-links a'))requestAnimationFrame(updateActive);
+    });
+    // Keep indicators correct after back/forward navigation.
+    window.addEventListener('popstate',updateActive);
+  }
+  setupPillNavHover();
+
 
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
   const validEntry=!window.location.hash || window.location.hash==='#home';
@@ -69,9 +113,9 @@
     finishId=window.setTimeout(restore,1800);
   }
 
-  // Important: the main HTML fires this exactly as its existing glow ends.
-  window.addEventListener('portfolio:contact-glow-complete',reveal,{once:true});
+  // The hero's own animation fires this about halfway through the split flaps.
+  window.addEventListener('portfolio:hero-midpoint',reveal,{once:true});
 
   // Safety: navbar must never remain invisible if an unrelated intro fails.
-  fallbackId=window.setTimeout(reveal,15000);
+  fallbackId=window.setTimeout(reveal,6500);
 })();
